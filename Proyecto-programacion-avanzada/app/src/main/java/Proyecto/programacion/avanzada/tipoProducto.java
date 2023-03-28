@@ -9,11 +9,26 @@ package Proyecto.programacion.avanzada;
  * @author Sashi
  */
 public class tipoProducto {
-        String nombre;
-        int codigo;
+        private String nombre;
+        private int codigo;
         
 	public tipoProducto() {
 		// TODO Auto-generated constructor stub
 	}
+        
+        //getter y setter de nombre
+        public void setNombre(String nombre){
+            this.nombre = nombre;
+        }
+        public String getNombre(){
+            return this.nombre;
+        }
+        //getter y setter de codigo
+        public void setCodigo(int codigo){
+            this.codigo = codigo;
+        }
+        public int getCodigo(){
+            return this.codigo;
+        }
 
 }
