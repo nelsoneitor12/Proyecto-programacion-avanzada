@@ -46,4 +46,8 @@ public class tipoProducto {
         public int getPrecio(){
             return precio;
         }
+        
+        public void addStock(){
+        	stock+=1;
+        }
 }

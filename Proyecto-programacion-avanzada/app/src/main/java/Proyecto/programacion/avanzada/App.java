@@ -3,18 +3,55 @@
  */
 package Proyecto.programacion.avanzada;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
 
 public class App {
    public static void main(String arg[]) throws IOException {
 	int opcion;
-    String a;
-	BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+    String a, linea;
+    String[] actual;
+    File f= new File("productos.txt");
+    Scanner s= new Scanner(f);
+    BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+    Map<String,tipoSeccion> bodega=new HashMap<String, tipoSeccion>();
+    
+    while(s.hasNext()){
+         linea=s.nextLine();
+         actual=linea.split(",");
+         if (bodega.containsKey(actual[4])) {
+        	 bodega.get(actual[4]).agregarProducto(actual);
+        	 //bodega.get(actual[4]).enlistarProductos();
+         }
+         else {
+        	 tipoSeccion newS= new tipoSeccion();
+        	 newS.setNomSeccion(actual[4]);
+        	 newS.agregarProducto(actual);
+        	 bodega.put(actual[4], newS);
+        	 //bodega.get(actual[4]).enlistarProductos();
+         }
+    }
+    
 	do {
             System.out.println("Seleccione la operacion a realizar");
             System.out.println("[1] POR DEFINIR");
+            System.out.println("[2] ENLISTAR PRODUCTOS");
             System.out.println("[0] SALIR");
             a = lector.readLine();
             opcion = Integer.parseInt(a);
+            
+            if(opcion==2) {
+            	for(Entry<String, tipoSeccion> r : bodega.entrySet()) {
+            		System.out.println("\nSeccion: "+r.getValue().getNomSeccion());
+            		r.getValue().enlistarProductos();
+            	}
+            }
 	}while(opcion!=0);
+	s.close();
     }
+
+
+   
 }

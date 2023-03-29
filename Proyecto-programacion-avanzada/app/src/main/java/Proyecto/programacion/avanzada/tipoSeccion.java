@@ -12,15 +12,15 @@ import java.util.*;
 
 public class tipoSeccion {
 	private String nomSeccion; //nombre seccion
-    private String desSeccion; //descripcion seccion
+    //private String desSeccion; //descripcion seccion
 	private ArrayList <tipoProducto> arr = new ArrayList<tipoProducto>();  
         
-	public tipoSeccion(String nombre, String descripcion) {
-        this.nomSeccion = nombre;
-        this.desSeccion = descripcion;
-	}
         
-        //setter y getter de nomSeccion
+        public tipoSeccion() {
+		// TODO Auto-generated constructor stub
+	}
+
+		//setter y getter de nomSeccion
         public void setNomSeccion(String nomSeccion){
             this.nomSeccion = nomSeccion;
         }
@@ -28,11 +28,29 @@ public class tipoSeccion {
             return this.nomSeccion;
         }
         //setter y getter de desSeccion
-        public void setDesSeccion(String desSeccion){
+        /*public void setDesSeccion(String desSeccion){
             this.desSeccion = desSeccion;
         }
         public String getDesSeccion(){
             return this.desSeccion;
+        }*/
+        
+        public void agregarProducto(String[] prod) {
+        	tipoProducto newPro= new tipoProducto();
+        	newPro.setNombre(prod[0]);
+        	newPro.setCodigo(Integer.parseInt(prod[1]));
+        	newPro.setStock(Integer.parseInt(prod[2]));
+        	newPro.setPrecio(Integer.parseInt(prod[3]));
+        	arr.add(newPro);     	
+        }
+        
+        public void enlistarProductos() {
+        	Iterator<tipoProducto> i=arr.iterator();
+        	tipoProducto now= new tipoProducto();
+        	while(i.hasNext()) {
+        		now= i.next();
+        	    System.out.println(now.getNombre()+","+now.getCodigo()+","+now.getStock()+",$"+now.getPrecio());
+        	}
         }
         
 }
