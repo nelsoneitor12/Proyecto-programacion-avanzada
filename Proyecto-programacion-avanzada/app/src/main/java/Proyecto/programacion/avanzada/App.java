@@ -7,7 +7,7 @@ import java.io.*;
 public class App {
    public static void main(String arg[]) throws IOException {
 	int opcion;
-        String a;
+    String a;
 	BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
 	do {
             System.out.println("Seleccione la operacion a realizar");

@@ -12,11 +12,12 @@ import java.util.*;
 
 public class tipoSeccion {
 	private String nomSeccion; //nombre seccion
-        private String desSeccion; //descripcion seccion
+    private String desSeccion; //descripcion seccion
 	private ArrayList <tipoProducto> arr = new ArrayList<tipoProducto>();  
         
-	public tipoSeccion() {
-		// TODO Auto-generated constructor stub
+	public tipoSeccion(String nombre, String descripcion) {
+        this.nomSeccion = nombre;
+        this.desSeccion = descripcion;
 	}
         
         //setter y getter de nomSeccion

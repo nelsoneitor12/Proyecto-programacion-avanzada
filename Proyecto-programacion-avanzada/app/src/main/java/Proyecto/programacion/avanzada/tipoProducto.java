@@ -11,10 +11,11 @@ package Proyecto.programacion.avanzada;
 public class tipoProducto {
         private String nombre;
         private int codigo;
+        private int stock;
         
-	public tipoProducto() {
+	    public  tipoProducto() {
 		// TODO Auto-generated constructor stub
-	}
+	    }
         
         //getter y setter de nombre
         public void setNombre(String nombre){
@@ -29,6 +30,13 @@ public class tipoProducto {
         }
         public int getCodigo(){
             return this.codigo;
+        }
+        //getter y setter de stock
+        public void setStock(int stock){
+            this.stock = stock;
+        }
+        public int getStock(){
+            return stock;
         }
 
 }
