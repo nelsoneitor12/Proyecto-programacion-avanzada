@@ -44,6 +44,15 @@ public class tipoSeccion {
         	arr.add(newPro);
         }
         
+        public void agregarProducto(String nombre,String codigo,String stock,String precio) { //sobrecarga por si los datos vienen separados en vez de ir en arreglo
+        	tipoProducto newPro = new tipoProducto();
+        	newPro.setNombre(nombre);
+        	newPro.setCodigo(Integer.parseInt(codigo));
+        	newPro.setStock(Integer.parseInt(stock));
+        	newPro.setPrecio(Integer.parseInt(precio));
+        	arr.add(newPro);
+        }
+        
         public void enlistarProductos() { 
         	Iterator<tipoProducto> i = arr.iterator();
         	tipoProducto now = new tipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion

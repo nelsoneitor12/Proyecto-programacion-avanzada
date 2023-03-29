@@ -29,6 +29,9 @@ public class tipoProducto {
         public void setCodigo(int codigo){
             this.codigo = codigo;
         }
+        public void setCodigo(String codigo){//sobrecarga si el codigo viene en String
+            this.codigo = Integer.parseInt(codigo);
+        }
         public int getCodigo(){
             return this.codigo;
         }
@@ -36,12 +39,18 @@ public class tipoProducto {
         public void setStock(int stock){
             this.stock = stock;
         }
+        public void setStock(String stock){//sobrecarga si el stock viene en String
+            this.stock = Integer.parseInt(stock);
+        }
         public int getStock(){
             return stock;
         }
         //getter y setter precio
         public void setPrecio(int precio){
             this.precio = precio;
+        }
+        public void setPrecio(String precio){//sobrecarga si el precio viene en String
+            this.precio = Integer.parseInt(precio);
         }
         public int getPrecio(){
             return precio;
