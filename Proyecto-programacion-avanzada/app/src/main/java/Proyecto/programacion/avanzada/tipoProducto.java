@@ -12,6 +12,7 @@ public class tipoProducto {
         private String nombre;
         private int codigo;
         private int stock;
+        private int precio;
         
 	    public  tipoProducto() {
 		// TODO Auto-generated constructor stub
@@ -38,5 +39,11 @@ public class tipoProducto {
         public int getStock(){
             return stock;
         }
-
+        //getter y setter precio
+        public void setPrecio(int precio){
+            this.precio = precio;
+        }
+        public int getPrecio(){
+            return precio;
+        }
 }
