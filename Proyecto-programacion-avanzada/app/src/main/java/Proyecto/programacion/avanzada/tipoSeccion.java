@@ -36,20 +36,20 @@ public class tipoSeccion {
         }*/
         
         public void agregarProducto(String[] prod) {
-        	tipoProducto newPro= new tipoProducto();
+        	tipoProducto newPro = new tipoProducto();
         	newPro.setNombre(prod[0]);
         	newPro.setCodigo(Integer.parseInt(prod[1]));
         	newPro.setStock(Integer.parseInt(prod[2]));
         	newPro.setPrecio(Integer.parseInt(prod[3]));
-        	arr.add(newPro);     	
+        	arr.add(newPro);
         }
         
-        public void enlistarProductos() {
-        	Iterator<tipoProducto> i=arr.iterator();
-        	tipoProducto now= new tipoProducto();
-        	while(i.hasNext()) {
-        		now= i.next();
-        	    System.out.println(now.getNombre()+","+now.getCodigo()+","+now.getStock()+",$"+now.getPrecio());
+        public void enlistarProductos() { 
+        	Iterator<tipoProducto> i = arr.iterator();
+        	tipoProducto now = new tipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
+        	while(i.hasNext()) {//se itera para imprimir productos de la seccion
+        		now = i.next();
+        	    System.out.println(now.getNombre()+", Codigo: "+now.getCodigo()+", Stock:"+now.getStock()+", $"+now.getPrecio());
         	}
         }
         
