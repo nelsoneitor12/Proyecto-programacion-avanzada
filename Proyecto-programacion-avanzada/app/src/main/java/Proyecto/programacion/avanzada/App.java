@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class App {
    public static void main(String arg[]) throws IOException {
     int opcion; //variable para que el usuario escoja en el menu
+    int indice; //variable para almacenar el indice que retorna el metodo que compreuba si un producto ya esta en la lista
     String a, linea; // a: almacena lo que el usuario ingrese antes de transformarlo a int, linea almacena las lineas leidas del archivo .txt
     String[] actual; //almacena los parametros que contiene una linea, pero por separado
     File f = new File("productos.txt"); //se abre el archivo que contiene la lista de productos
@@ -49,16 +50,24 @@ public class App {
             	}
             }else if(opcion==2){
                 actual = new String[5];
+                System.out.print("Ingrese seccion del producto: ");
+                actual[4] = lector.readLine();
                 System.out.print("Ingrese nombre del producto: ");
                 actual[0] = lector.readLine();
+                indice=bodega.get(actual[4]).esta(actual[0]);
+                //System.out.println("indice retornado:"+indice);
+                if(indice>=0) {
+                	//System.out.println("pase aqui");
+                	bodega.get(actual[4]).agregarStock(indice);
+                	continue;
+                }
                 System.out.print("Ingrese codigo del producto: ");
                 actual[1] = lector.readLine();
                 System.out.print("Ingrese stock del producto: ");
                 actual[2] = lector.readLine();
                 System.out.print("Ingrese precio del producto: ");
                 actual[3] = lector.readLine();
-                System.out.print("Ingrese seccion del producto: ");
-                actual[4] = lector.readLine();
+                
                 
                 if (bodega.containsKey(actual[4])) { //se comprueba que esta seccion ya se encuentre en el mapa
                     bodega.get(actual[4]).agregarProducto(actual);

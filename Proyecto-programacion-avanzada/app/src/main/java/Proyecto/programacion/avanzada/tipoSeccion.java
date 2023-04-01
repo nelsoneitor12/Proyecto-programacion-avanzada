@@ -8,6 +8,9 @@ package Proyecto.programacion.avanzada;
  * @author Sashi
  */
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class tipoSeccion {
@@ -60,6 +63,24 @@ public class tipoSeccion {
         		now = i.next();
         	    System.out.println(now.getNombre()+", Codigo: "+now.getCodigo()+", Stock:"+now.getStock()+", $"+now.getPrecio());
         	}
+        }
+        public int esta(String prod) {
+        	int i;
+        	for (i=0;i<arr.size();i++) {
+        		//System.out.println("El nombre retornado: "+arr.get(i).getNombre()+"<-> nombre buscado:"+prod);
+        		if(arr.get(i).getNombre().equals(prod)) {
+        			return i;
+        		}
+        	}
+			return -1;
+        }
+        
+        public void agregarStock(int indice) throws IOException {
+        	int stock;
+        	BufferedReader line= new BufferedReader(new InputStreamReader(System.in));
+        	System.out.println("El producto ya se encuentra en bodega, ingrese la cantidad de stock que desea agregar: ");
+        	stock=Integer.parseInt(line.readLine());
+        	arr.get(indice).addStock(stock);
         }
         
 }
