@@ -24,14 +24,13 @@ public class App {
          actual = linea.split(",");
          if (bodega.containsKey(actual[4])) { //se comprueba que esta seccion ya se encuentre en el mapa
         	 bodega.get(actual[4]).agregarProducto(actual);
-        	 //bodega.get(actual[4]).enlistarProductos();
          }
          else { //si no se encuentra se crea la seccion
         	 tipoSeccion newS = new tipoSeccion();
         	 newS.setNomSeccion(actual[4]);
         	 newS.agregarProducto(actual);
         	 bodega.put(actual[4], newS);
-        	 //bodega.get(actual[4]).enlistarProductos();
+        	
          }
     }
     //menu
@@ -50,33 +49,33 @@ public class App {
             	}
             }else if(opcion==2){
                 actual = new String[5];
+                
                 System.out.print("Ingrese seccion del producto: ");
                 actual[4] = lector.readLine();
+                if (!bodega.containsKey(actual[4])) { //se comprueba que esta seccion ya se encuentre en el mapa
+                    tipoSeccion newS = new tipoSeccion();
+                    newS.setNomSeccion(actual[4]);
+                    bodega.put(actual[4], newS);
+                }
+               
                 System.out.print("Ingrese nombre del producto: ");
                 actual[0] = lector.readLine();
                 indice=bodega.get(actual[4]).esta(actual[0]);
-                //System.out.println("indice retornado:"+indice);
                 if(indice>=0) {
-                	//System.out.println("pase aqui");
+                	
                 	bodega.get(actual[4]).agregarStock(indice);
                 	continue;
                 }
-                System.out.print("Ingrese codigo del producto: ");
+               
+               System.out.print("Ingrese codigo del producto: ");
                 actual[1] = lector.readLine();
                 System.out.print("Ingrese stock del producto: ");
                 actual[2] = lector.readLine();
                 System.out.print("Ingrese precio del producto: ");
                 actual[3] = lector.readLine();
                 
+                bodega.get(actual[4]).agregarProducto(actual);
                 
-                if (bodega.containsKey(actual[4])) { //se comprueba que esta seccion ya se encuentre en el mapa
-                    bodega.get(actual[4]).agregarProducto(actual);
-                }else { //si no se encuentra se crea la seccion
-                    tipoSeccion newS = new tipoSeccion();
-                    newS.setNomSeccion(actual[4]);
-                    newS.agregarProducto(actual);
-                    bodega.put(actual[4], newS);
-                }
             }
 	}while(opcion!=0);
         //se cierra archivo

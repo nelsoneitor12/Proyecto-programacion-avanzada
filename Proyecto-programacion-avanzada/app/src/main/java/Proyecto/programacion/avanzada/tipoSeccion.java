@@ -64,18 +64,16 @@ public class tipoSeccion {
         	    System.out.println(now.getNombre()+", Codigo: "+now.getCodigo()+", Stock:"+now.getStock()+", $"+now.getPrecio());
         	}
         }
-        public int esta(String prod) {
+        public int esta(String prod) {//funcion que verifica si el producto ya esta en el arraylist
         	int i;
         	for (i=0;i<arr.size();i++) {
-        		//System.out.println("El nombre retornado: "+arr.get(i).getNombre()+"<-> nombre buscado:"+prod);
-        		if(arr.get(i).getNombre().equals(prod)) {
-        			return i;
-        		}
+        		
+        		if(arr.get(i).getNombre().equals(prod)) return i;
         	}
 			return -1;
         }
         
-        public void agregarStock(int indice) throws IOException {
+        public void agregarStock(int indice) throws IOException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
         	int stock;
         	BufferedReader line= new BufferedReader(new InputStreamReader(System.in));
         	System.out.println("El producto ya se encuentra en bodega, ingrese la cantidad de stock que desea agregar: ");
