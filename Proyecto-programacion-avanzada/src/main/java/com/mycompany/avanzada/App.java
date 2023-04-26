@@ -37,32 +37,25 @@ public class App {
             		}
             		break;
             	case 2:
-            		actual = new String[5];
+            		actual = new String[6];
                 
             		System.out.print("Ingrese seccion del producto: ");
             		actual[4] = lector.readLine();
-            		//se comprueba que esta seccion ya se encuentre en el mapa
-            		if (!bodega.containsKey(actual[4])) { 
-            			TipoSeccion newS = new TipoSeccion();
-            			newS.setNomSeccion(actual[4]);
-            			bodega.put(actual[4], newS);
-            		}
-               
             		System.out.print("Ingrese nombre del producto: ");
             		actual[0] = lector.readLine();
-            		indice = bodega.get(actual[4]).esta(actual[0]);
+            		System.out.print("Ingrese lote del producto: ");
+            		actual[5] = lector.readLine();
+            		indice = bodega.get(actual[4]).esta(Integer.parseInt(actual[5]));
             		if(indice >= 0) {
             			bodega.get(actual[4]).agregarStock(indice);
-            			continue;
+            			break;
             		}
-               
             		System.out.print("Ingrese codigo del producto: ");
             		actual[1] = lector.readLine();
             		System.out.print("Ingrese stock del producto: ");
             		actual[2] = lector.readLine();
             		System.out.print("Ingrese precio del producto: ");
             		actual[3] = lector.readLine();
-                
             		bodega.get(actual[4]).agregarProducto(actual);
             		break;
             	default:

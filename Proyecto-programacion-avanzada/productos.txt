@@ -1,22 +1,22 @@
-Lavaloza limon 5L,10365,20,3100,Limpieza
-Detergente en polvo 3kg,15240,30,3900,Limpieza
-Suavizante ropa ultrasuave 0.5L,14121,10,3000,Limpieza
-Limpiador multiuso 400g,11112,20,1000,Limpieza
-Limpia vidrios 500cc,12121,20,2800,Limpieza
-Cloro gel 900ml,25142,20,1900,Limpieza
-Trapero humedo 12 unidades,45621,13,2300,Limpieza
-Jugo naranja 5L,14785,10,3000,Botilleria
-Agua mineral 1L,54625,30,800,Botilleria
-Vino en caja 500ml,44441,20,2300,Botilleria
-Lata de cerveza,66688,40,500,Botilleria
-Bebida energetica 450cc,33332,10,1700,Botilleria
-Alimento de perro cachorro 15kg,75395,6,30000,Mascotas
-Alimento perro adulto 100g,99998,14,600,Mascotas
-Arena sanitaria gatos 4kg,45867,12,10000,Mascotas
-Alimento gato adulto 8kg,36941,11,24000,Mascotas
-Alimento enlatado gato adulto 85g,11668,5,900,Mascotas
-Atun 100g,55760,50,1400,Despensa
-Arroz grado 2 1kg,44444,10,1500,Despensa
-Fideos 400g,13138,50,1200,Despensa
-Sopa pollo en polvo 70g,88878,30,500,Despensa
-Pure de papas 125g,66666,13,900,Despensa
+Lavaloza limon 5L,10365,20,3100,Limpieza,34943
+Detergente en polvo 3kg,15240,30,3900,Limpieza,93943
+Suavizante ropa ultrasuave 0.5L,14121,10,3000,Limpieza,23424
+Limpiador multiuso 400g,11112,20,1000,Limpieza,069584
+Limpia vidrios 500cc,12121,20,2800,Limpieza,35345
+Cloro gel 900ml,25142,20,1900,Limpieza,858643
+Trapero humedo 12 unidades,45621,13,2300,Limpieza,83458
+Jugo naranja 5L,14785,10,3000,Botilleria,294324
+Agua mineral 1L,54625,30,800,Botilleria,34394
+Vino en caja 500ml,44441,20,2300,Botilleria,43534
+Lata de cerveza,66688,40,500,Botilleria,345935
+Bebida energetica 450cc,33332,10,1700,Botilleria,34959
+Alimento de perro cachorro 15kg,75395,6,30000,Mascotas,345345
+Alimento perro adulto 100g,99998,14,600,Mascotas,348294
+Arena sanitaria gatos 4kg,45867,12,10000,Mascotas,234823
+Alimento gato adulto 8kg,36941,11,24000,Mascotas,234242
+Alimento enlatado gato adulto 85g,11668,5,900,Mascotas,234245
+Atun 100g,55760,50,1400,Despensa,345345
+Arroz grado 2 1kg,44444,10,1500,Despensa,23424
+Fideos 400g,13138,50,1200,Despensa,234234
+Sopa pollo en polvo 70g,88878,30,500,Despensa,234234
+Pure de papas 125g,66666,13,900,Despensa,234234
