@@ -12,27 +12,14 @@ public class App {
    public static void main(String arg[]) throws IOException {
     int opcion; //variable para que el usuario escoja en el menu
     int indice; //variable para almacenar el indice que retorna el metodo que comprueba si un producto ya esta en la lista
-    String a, linea; // a: almacena lo que el usuario ingrese antes de transformarlo a int, linea almacena las lineas leidas del archivo .txt
+    String a; // a: almacena lo que el usuario ingrese antes de transformarlo a int, linea almacena las lineas leidas del archivo .txt
     String[] actual; //almacena los parametros que contiene una linea, pero por separado
     File f = new File("./productos.txt"); //se abre el archivo que contiene la lista de productos
-    Scanner s = new Scanner(f);//se inicializa un scanner para trabajar con el archivo
     BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));//se inicializa lector para leer input
-    Map<String,TipoSeccion> bodega = new HashMap<String, TipoSeccion>(); //se crea mapa para acceder mas facilmente al stock
-    //mientras queden lineas sin leer se agregaran los contenidos de cada una en el mapa usando como key la seccion
-    while(s.hasNext()){ 
-         linea = s.nextLine();
-         actual = linea.split(",");
-         if (bodega.containsKey(actual[4])) { //se comprueba que esta seccion ya se encuentre en el mapa
-        	 bodega.get(actual[4]).agregarProducto(actual);
-         }
-         else { //si no se encuentra se crea la seccion
-        	 TipoSeccion newS = new TipoSeccion();
-        	 newS.setNomSeccion(actual[4]);
-        	 newS.agregarProducto(actual);
-        	 bodega.put(actual[4], newS);
-        	
-         }
-    }
+    Map<String,TipoSeccion> bodega; //se crea mapa para acceder mas facilmente al stock
+    FileClass lecturaTxt= new FileClass(f);
+    
+    bodega= lecturaTxt.lecturaProductos();
     //menu
 	do {
             System.out.println("Seleccione la operacion a realizar");
@@ -78,10 +65,11 @@ public class App {
                 
             		bodega.get(actual[4]).agregarProducto(actual);
             		break;
+            	default:
+            		break;
             }
 	}while(opcion!=0);
         //se cierra archivo
-		s.close();
     }
 
 
