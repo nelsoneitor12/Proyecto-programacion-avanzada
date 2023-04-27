@@ -9,19 +9,17 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class App {
-   public static void main(String arg[]) throws IOException {
-    int opcion; //variable para que el usuario escoja en el menu
-    int indice; //variable para almacenar el indice que retorna el metodo que comprueba si un producto ya esta en la lista
-    String a; // a: almacena lo que el usuario ingrese antes de transformarlo a int, linea almacena las lineas leidas del archivo .txt
-    String[] actual; //almacena los parametros que contiene una linea, pero por separado
-    File f = new File("./productos.txt"); //se abre el archivo que contiene la lista de productos
-    BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));//se inicializa lector para leer input
-    Map<String,TipoSeccion> bodega; //se crea mapa para acceder mas facilmente al stock
-    FileClass lecturaTxt= new FileClass(f);
+   
+	public static void main(String arg[]) throws IOException {
     
-    bodega= lecturaTxt.lecturaProductos();
-    //menu
-	do {
+		int opcion; //variable para que el usuario escoja en el menu
+		String a; // a: almacena lo que el usuario ingrese antes de transformarlo a int
+		BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));//se inicializa lector para leer input
+		Bodega bodega= new Bodega();
+    
+		
+		//menu
+		do {
             System.out.println("Seleccione la operacion a realizar");
             System.out.println("[1] ENLISTAR PRODUCTOS");
             System.out.println("[2] AGREGAR PRODUCTO");
@@ -31,40 +29,15 @@ public class App {
             
             switch(opcion) {
             	case 1:
-            		for(Entry<String, TipoSeccion> r : bodega.entrySet()) {
-            			System.out.println("\nSeccion: "+r.getValue().getNomSeccion());
-            			r.getValue().enlistarProductos();
-            		}
+            		bodega.enlistarSecciones();
             		break;
             	case 2:
-            		actual = new String[6];
-                
-            		System.out.print("Ingrese seccion del producto: ");
-            		actual[4] = lector.readLine();
-            		System.out.print("Ingrese nombre del producto: ");
-            		actual[0] = lector.readLine();
-            		System.out.print("Ingrese lote del producto: ");
-            		actual[5] = lector.readLine();
-            		indice = bodega.get(actual[4]).esta(Integer.parseInt(actual[5]));
-            		if(indice >= 0) {
-            			bodega.get(actual[4]).agregarStock(indice);
-            			break;
-            		}
-            		System.out.print("Ingrese codigo del producto: ");
-            		actual[1] = lector.readLine();
-            		System.out.print("Ingrese stock del producto: ");
-            		actual[2] = lector.readLine();
-            		System.out.print("Ingrese precio del producto: ");
-            		actual[3] = lector.readLine();
-            		bodega.get(actual[4]).agregarProducto(actual);
+            		bodega.agregarProducto();
             		break;
             	default:
             		break;
             }
-	}while(opcion!=0);
-        //se cierra archivo
-    }
+		}while(opcion!=0);
+   }
 
-
-   
 }

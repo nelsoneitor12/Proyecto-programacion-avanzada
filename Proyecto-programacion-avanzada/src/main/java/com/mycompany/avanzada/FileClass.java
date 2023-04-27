@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class FileClass {
-	private String linea;
+	private String linea;// linea almacena las lineas leidas del archivo .txt
 	private String[] actual;
 	private File texto; 
 	private Map<String,TipoSeccion> bodega = new HashMap<String, TipoSeccion>();

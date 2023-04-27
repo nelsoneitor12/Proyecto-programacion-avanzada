@@ -13,7 +13,7 @@ public class TipoProducto {
         private int codigo;
         private int stock;
         private int precio;
-        private int lote;
+        
         
 	    public  TipoProducto() {
 		// TODO Auto-generated constructor stub
@@ -56,14 +56,6 @@ public class TipoProducto {
         public int getPrecio(){
             return precio;
         }
-        
-        public void setLote(int lote) {
-			this.lote = lote;
-		}
-        public int getLote() {
-			return lote;
-		}
-
         
         public void addStock(int i){
         	stock+=i;
