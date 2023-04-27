@@ -23,6 +23,7 @@ public class Bodega {
  			r.getValue().enlistarProductos();
  		}
 	 }
+         
 	 public void agregarProducto() throws IOException{
 		 BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));//se inicializa lector para leer input
 		 String[] actual;
