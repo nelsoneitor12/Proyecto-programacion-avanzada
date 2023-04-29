@@ -25,7 +25,11 @@ public class Bodega {
         public Map<String,TipoSeccion> getMapa(){
             return bodega;
         }
-         
+        
+        public Map<String,Distribuidores> getMapaDist(){
+            return stockDistrib;
+        }
+        
 	 public void enlistarSecciones() {
 		 for(Entry<String, TipoSeccion> r : bodega.entrySet()) {
  			System.out.println("\nSeccion: "+r.getValue().getNomSeccion());

@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -41,16 +40,16 @@ public final class ventanaEnlistar extends javax.swing.JFrame {
         
     }
     
+    
     public void listar() throws FileNotFoundException{
         String[] a = new String[5];
         modelo = (DefaultTableModel)Tabla.getModel();
         TipoProducto now;
         for(Map.Entry<String, TipoSeccion> r : bodega.getMapa().entrySet()) {
-            now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
         	for(Entry<String, TipoProducto> o : r.getValue().getMapa().entrySet()) {
                     now = o.getValue();
                     a[0] = now.getNombre();
-                    a[1] = now.getMarca();
+                    a[1] = now.getSeccion();
                     a[2] = Integer.toString(now.getCodigo());
                     a[3] = Integer.toString(now.getStock());
                     a[4] = Integer.toString(now.getPrecio());

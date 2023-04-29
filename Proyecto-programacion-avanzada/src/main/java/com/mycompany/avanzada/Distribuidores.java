@@ -12,14 +12,18 @@ public class Distribuidores extends TipoSeccion{
 	public Distribuidores() {
 		// TODO Auto-generated constructor stub
 	}
-	
+	public Map<String,ProdDistrib> getMapaD(){
+            return mapa;
+        }
+        
 	public void agregarProducto(String[] prod) {
     	ProdDistrib newPro = new ProdDistrib();
     	newPro.setNombre(prod[0]);
     	newPro.setCodigo(Integer.parseInt(prod[1]));
     	newPro.setStock(Integer.parseInt(prod[2]));
     	newPro.setPrecio(Integer.parseInt(prod[3]));
-    	newPro.setCategoria(prod[4]);
+    	newPro.setSeccion(prod[4]);
+        newPro.setMarca(prod[5]);
     	mapa.put(newPro.getNombre(),newPro);
     	
     }
@@ -28,7 +32,7 @@ public class Distribuidores extends TipoSeccion{
     	ProdDistrib now = new ProdDistrib();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
     	for(Entry<String, ProdDistrib> r : mapa.entrySet()) {
     		now=r.getValue();
-			System.out.println("Producto: "+now.getNombre()+",Precio unitario:$"+now.getPrecio()+",Stock Disponible:"+now.getStock()+",Categoria:"+now.getCategoria());
+			System.out.println("Producto: "+now.getNombre()+",Precio unitario:$"+now.getPrecio()+",Stock Disponible:"+now.getStock()+",Categoria:"+now.getMarca());
 		}
     }
 	

@@ -5,15 +5,14 @@
 package ventanas;
 
 import com.mycompany.avanzada.Bodega;
+import com.mycompany.avanzada.Distribuidores;
+import com.mycompany.avanzada.ProdDistrib;
 import com.mycompany.avanzada.TipoProducto;
-import com.mycompany.avanzada.TipoSeccion;
 import java.io.FileNotFoundException;
 import javax.swing.table.DefaultTableModel;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -37,23 +36,24 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
         modelo.addColumn("C3"); 
         modelo.addColumn("C4");
         modelo.addColumn("C5"); 
+        modelo.addColumn("C6");
         this.listar();
         
     }
     
     public void listar() throws FileNotFoundException{
-        String[] a = new String[5];
+        String[] a = new String[6];
         modelo = (DefaultTableModel)Tabla.getModel();
-        TipoProducto now;
-        for(Map.Entry<String, TipoSeccion> r : bodega.getMapa().entrySet()) {
-            now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
-        	for(Entry<String, TipoProducto> o : r.getValue().getMapa().entrySet()) {
-                    now = o.getValue();
+        ProdDistrib now;
+        for(Entry<String, Distribuidores> r : bodega.getMapaDist().entrySet()) {
+        	for(Entry<String, ProdDistrib> o : r.getValue().getMapaD().entrySet()) {
+                    now = (ProdDistrib) o.getValue();
                     a[0] = now.getNombre();
-                    a[1] = now.getMarca();
+                    a[1] = now.getSeccion();
                     a[2] = Integer.toString(now.getCodigo());
                     a[3] = Integer.toString(now.getStock());
                     a[4] = Integer.toString(now.getPrecio());
+                    a[5] = now.getMarca();
                     modelo.addRow(a);    
     		}
  	}
@@ -90,14 +90,14 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Seccion", "Codigo", "Stock", "Precio"
+                "Nombre", "Categoria", "Codigo", "Stock", "Precio", "Marca"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

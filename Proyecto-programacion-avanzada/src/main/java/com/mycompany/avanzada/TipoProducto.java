@@ -10,7 +10,7 @@ package com.mycompany.avanzada;
  */
 public class TipoProducto {
         private String nombre;
-        private String Marca;
+        private String seccion;
         private int codigo;
         private int stock;
         private int precio;
@@ -66,12 +66,12 @@ public class TipoProducto {
             stock-=i;
         }
 
-	public String getMarca() {
-            return Marca;
+	public String getSeccion() {
+            return seccion;
 	}
 
-        public void setMarca(String marca) {
-            Marca = marca;
+        public void setSeccion(String marca) {
+            seccion = marca;
 	}
 
 }

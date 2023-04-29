@@ -80,7 +80,7 @@ public class OrdenCompra {
 		TipoProducto now;
 		while(it.hasNext()) {
 			now=it.next();
-			System.out.println("Producto="+now.getNombre()+" "+now.getMarca()+",Cantidad="+now.getStock()+",Precio Unitario=$"+now.getPrecio());
+			System.out.println("Producto="+now.getNombre()+" "+now.getSeccion()+",Cantidad="+now.getStock()+",Precio Unitario=$"+now.getPrecio());
 		}
 		System.out.println("Precio Final: $"+total);
 	}

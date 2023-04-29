@@ -40,7 +40,7 @@ public class TipoSeccion {
         	newPro.setCodigo(Integer.parseInt(prod[1]));
         	newPro.setStock(Integer.parseInt(prod[2]));
         	newPro.setPrecio(Integer.parseInt(prod[3]));
-        	newPro.setMarca(prod[4]);
+        	newPro.setSeccion(prod[4]);
         	mapa.put(newPro.getNombre(),newPro);
         	
         }
@@ -49,7 +49,7 @@ public class TipoSeccion {
         	TipoProducto now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
         	for(Entry<String, TipoProducto> r : mapa.entrySet()) {
         		now=r.getValue();
-    			System.out.println("Producto: "+now.getNombre()+",Marca:"+now.getMarca()+",Precio:"+now.getPrecio()+",Codigo:"+now.getCodigo()+", Stock:"+now.getStock());
+    			System.out.println("Producto: "+now.getNombre()+",Marca:"+now.getSeccion()+",Precio:"+now.getPrecio()+",Codigo:"+now.getCodigo()+", Stock:"+now.getStock());
     		}
         }
         
@@ -73,7 +73,7 @@ public class TipoSeccion {
         	copia=new TipoProducto();
         	
         	copia.setNombre(original.getNombre());
-        	copia.setMarca(original.getMarca());
+        	copia.setSeccion(original.getSeccion());
         	copia.setPrecio(original.getPrecio());
         	copia.setStock(original.getStock());
         	copia.setCodigo(original.getCodigo());
@@ -129,7 +129,7 @@ public class TipoSeccion {
         	case 6:
         		System.out.println("Seleccione la nueva marca para el producto");
         		String auxMarca = lector.readLine();
-        		mapa.get(prod[0]).setMarca(auxMarca);
+        		mapa.get(prod[0]).setSeccion(auxMarca);
         		break;
         	}
 

@@ -4,7 +4,7 @@ Suavizante ropa ultrasuave 0.5L,14121,400,2000,Limpieza,Omo
 Limpiador multiuso 400g,11112,700,600,Limpieza,Cif
 Limpia vidrios 500cc,12121,300,2000,Limpieza,Cif
 Cloro gel 900ml,25142,1000,1000,Limpieza,Cif
-Trapero humedo 12 unidades,45621,1000,1500,83458,Cif
+Trapero humedo 12 unidades,45621,1000,1500,Limpieza,Cif
 Jugo naranja 5L,14785,1000,2000,Botilleria,Watts
 Agua mineral 1L,54625,2000,400,Botilleria,Cachantun
 Vino en caja 500ml,44441,1000,1800,Botilleria,Gato
