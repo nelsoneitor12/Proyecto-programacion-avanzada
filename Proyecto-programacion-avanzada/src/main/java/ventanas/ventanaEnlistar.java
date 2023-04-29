@@ -4,17 +4,60 @@
  */
 package ventanas;
 
+import com.mycompany.avanzada.Bodega;
+import com.mycompany.avanzada.TipoProducto;
+import com.mycompany.avanzada.TipoSeccion;
+import java.io.FileNotFoundException;
+import javax.swing.table.DefaultTableModel;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Sashi
  */
-public class ventanaEnlistar extends javax.swing.JFrame {
+public final class ventanaEnlistar extends javax.swing.JFrame {
 
     /**
      * Creates new form ventanaEnlistar
      */
-    public ventanaEnlistar() {
+    DefaultTableModel modelo;
+    Bodega bodega;
+    public ventanaEnlistar() throws FileNotFoundException {
+        
         initComponents();
+
+        bodega = new Bodega();
+        modelo = new DefaultTableModel();
+        modelo.addColumn("C1"); 
+        modelo.addColumn("C2");
+        modelo.addColumn("C3"); 
+        modelo.addColumn("C4");
+        modelo.addColumn("C5"); 
+        this.listar();
+
+    }
+    
+    public void listar() throws FileNotFoundException{
+        String[] a = new String[5];
+        modelo = (DefaultTableModel)Tabla.getModel();
+        TipoProducto now;
+        for(Map.Entry<String, TipoSeccion> r : bodega.getMapa().entrySet()) {
+            now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
+        	for(Entry<String, TipoProducto> o : r.getValue().getMapa().entrySet()) {
+                    now = o.getValue();
+                    a[0] = now.getNombre();
+                    a[1] = now.getMarca();
+                    a[2] = Integer.toString(now.getCodigo());
+                    a[3] = Integer.toString(now.getStock());
+                    a[4] = Integer.toString(now.getPrecio());
+                    modelo.addRow(a);    
+    		}
+ 	}
+        Tabla.setModel(modelo);
     }
 
     /**
@@ -26,8 +69,9 @@ public class ventanaEnlistar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -41,17 +85,43 @@ public class ventanaEnlistar extends javax.swing.JFrame {
             }
         });
 
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Seccion", "Codigo", "Stock", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(Tabla);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -59,9 +129,9 @@ public class ventanaEnlistar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,13 +174,21 @@ public class ventanaEnlistar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ventanaEnlistar().setVisible(true);
+                try {
+                    ventanaEnlistar v = new ventanaEnlistar();
+                    v.setVisible(true);
+                    v.listar();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(ventanaEnlistar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabla;
     private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
 }

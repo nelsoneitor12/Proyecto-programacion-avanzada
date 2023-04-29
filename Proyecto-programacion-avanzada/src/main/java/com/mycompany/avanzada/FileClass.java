@@ -9,12 +9,14 @@ public class FileClass {
 	private String linea;// linea almacena las lineas leidas del archivo .txt
 	private String[] actual;
 	private File texto; 
-	private Map<String,TipoSeccion> bodega = new HashMap<String, TipoSeccion>();
-	public FileClass(File txt) {
-		texto= txt;
+	private Map<String, TipoSeccion> bodega = new HashMap<String, TipoSeccion>();
+	private Map<String, Distribuidores> distribuidors = new HashMap<String, Distribuidores>();
+	public FileClass() {
+		
 	}
 	
-	public Map<String,TipoSeccion> lecturaProductos() throws FileNotFoundException {
+	public Map<String,TipoSeccion> lecturaProductos(File txt) throws FileNotFoundException {
+		texto=txt;
 		Scanner s = new Scanner(texto);
 		while(s.hasNext()){ 
 	         linea = s.nextLine();
@@ -29,6 +31,26 @@ public class FileClass {
 	        	 bodega.put(actual[4], newS);
 	         }
 	    }
+		s.close();
 		return bodega;
+	}
+	public Map<String,Distribuidores> lecturaProductos(File txt, int i) throws FileNotFoundException {
+		texto=txt;
+		Scanner s = new Scanner(texto);
+		while(s.hasNext()){ 
+	         linea = s.nextLine();
+	         actual = linea.split(",");
+	         if (distribuidors.containsKey(actual[5])) { //se comprueba que esta seccion ya se encuentre en el mapa
+	        	 distribuidors.get(actual[5]).agregarProducto(actual);
+	         }
+	         else { //si no se encuentra se crea la seccion
+	        	 Distribuidores newS = new Distribuidores();
+	        	 newS.setNomSeccion(actual[5]);
+	        	 newS.agregarProducto(actual);
+	        	 distribuidors.put(actual[5], newS);
+	         }
+	    }
+		s.close();
+		return distribuidors;
 	}
 }

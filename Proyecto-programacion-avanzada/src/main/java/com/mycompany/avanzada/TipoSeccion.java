@@ -15,12 +15,10 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class TipoSeccion {
-	private String nomSeccion; //nombre seccion
-	private ArrayList <TipoProducto> arr = new ArrayList<TipoProducto>();  
-    private Map <String, TipoProducto> mapa= new HashMap<String,TipoProducto>(); 
+    protected String nomSeccion; //nombre seccion
+    private Map <String, TipoProducto> mapa = new HashMap<String,TipoProducto>(); 
         
-        public TipoSeccion() {
-        
+        public TipoSeccion() {   
 		// TODO Auto-generated constructor stub
         }
 
@@ -32,6 +30,9 @@ public class TipoSeccion {
             return this.nomSeccion;
         }
         
+        public Map<String, TipoProducto> getMapa(){
+            return mapa;
+        }
         
         public void agregarProducto(String[] prod) {
         	TipoProducto newPro = new TipoProducto();
@@ -39,25 +40,16 @@ public class TipoSeccion {
         	newPro.setCodigo(Integer.parseInt(prod[1]));
         	newPro.setStock(Integer.parseInt(prod[2]));
         	newPro.setPrecio(Integer.parseInt(prod[3]));
+        	newPro.setMarca(prod[4]);
         	mapa.put(newPro.getNombre(),newPro);
         	
         }
         
-        /*public void agregarProducto(String nombre,String codigo,String stock,String precio) { //sobrecarga por si los datos vienen separados en vez de ir en arreglo
-        	TipoProducto newPro = new TipoProducto();
-        	newPro.setNombre(nombre);
-        	newPro.setCodigo(Integer.parseInt(codigo));
-        	newPro.setStock(Integer.parseInt(stock));
-        	newPro.setPrecio(Integer.parseInt(precio));
-        	arr.add(newPro);
-        }*/
-        
         public void enlistarProductos() { 
-        	Iterator<TipoProducto> i = arr.iterator();
         	TipoProducto now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
         	for(Entry<String, TipoProducto> r : mapa.entrySet()) {
         		now=r.getValue();
-    			System.out.println("Producto: "+now.getNombre()+",Precio:"+now.getPrecio()+",Codigo:"+now.getCodigo()+", Stock:"+now.getStock());
+    			System.out.println("Producto: "+now.getNombre()+",Marca:"+now.getMarca()+",Precio:"+now.getPrecio()+",Codigo:"+now.getCodigo()+", Stock:"+now.getStock());
     		}
         }
         
@@ -66,12 +58,87 @@ public class TipoSeccion {
 			return 0;
         }
         
-        public void agregarStock(String indice) throws IOException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
-        	int stock;
-        	BufferedReader line= new BufferedReader(new InputStreamReader(System.in));
-        	System.out.println("El producto ya se encuentra en bodega, ingrese la cantidad de stock que desea agregar: ");
-        	stock=Integer.parseInt(line.readLine());
-        	mapa.get(indice).addStock(stock);
+        public void actualizarStock(String indice, int i) throws IOException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
+        	int stock=i;
+        	mapa.get(indice).removeStock(stock);
+        }
+        
+        public TipoProducto getProducto(String name) {
+        	return mapa.get(name);
+        }
+        
+        public TipoProducto getCloneProducto(String name) {
+        	TipoProducto original,copia;
+        	original=mapa.get(name);
+        	copia=new TipoProducto();
+        	
+        	copia.setNombre(original.getNombre());
+        	copia.setMarca(original.getMarca());
+        	copia.setPrecio(original.getPrecio());
+        	copia.setStock(original.getStock());
+        	copia.setCodigo(original.getCodigo());
+        	
+        	return copia;
+        	
+        }
+        public void elimProd() throws IOException{
+        	BufferedReader lector= new BufferedReader(new InputStreamReader(System.in));
+        	System.out.print("Ingrese nombre del producto: ");
+     		String nomAux = lector.readLine();
+     		if (mapa.get(nomAux)==null) {
+     			System.out.println("Nombre del producto no encontrado");
+    	 	 	return;	
+     		}
+        	mapa.remove(nomAux,mapa.get(nomAux));
+        }
+        
+        public TipoProducto elimProd(String nombre) {
+        	if (mapa.get(nombre)==null) {
+     			System.out.println("Nombre del producto no encontrado");
+    	 	 	return null;	
+     		}
+        	TipoProducto a = mapa.get(nombre); 
+        	mapa.remove(nombre,mapa.get(nombre));
+        	return a;
+        }
+        
+        public boolean existeProducto(String producto) {
+        	if (mapa.get(producto)!=null) return true; // si no lo encuentra retorna false
+        	else return false;
+        	
+        }
+        
+        public void modificarProducto(int opcion, String[] prod) throws IOException {
+        	BufferedReader lector= new BufferedReader(new InputStreamReader(System.in));
+        	switch(opcion) {// case para cada caso del menu anterior
+        	case 3:
+        		System.out.println("Seleccione el nuevo codigo para el producto");
+        		int codAux = Integer.parseInt(lector.readLine());
+        		mapa.get(prod[0]).setCodigo(codAux);
+        		break;
+        	case 4:
+        		System.out.println("Seleccione el nuevo stock para el producto");
+        		int auxStock = Integer.parseInt(lector.readLine());
+        		mapa.get(prod[0]).setStock(auxStock);
+        		break;
+        	case 5:
+        		System.out.println("Seleccione el nuevo precio para el producto");
+        		int auxPrecio = Integer.parseInt(lector.readLine());
+        		mapa.get(prod[0]).setPrecio(auxPrecio);
+        		break;
+        	case 6:
+        		System.out.println("Seleccione la nueva marca para el producto");
+        		String auxMarca = lector.readLine();
+        		mapa.get(prod[0]).setMarca(auxMarca);
+        		break;
+        	}
+
+        	
+        }
+        
+        public void agregarProducto(TipoProducto prod) {
+        	mapa.put(prod.getNombre(), prod);
+        	
         }
         
 }
