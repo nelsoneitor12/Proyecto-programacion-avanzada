@@ -19,14 +19,14 @@ import javax.swing.table.TableModel;
  *
  * @author Sashi
  */
-public final class ventanaEnlistar extends javax.swing.JFrame {
+public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
 
     /**
      * Creates new form ventanaEnlistar
      */
     DefaultTableModel modelo;
     Bodega bodega;
-    public ventanaEnlistar() throws FileNotFoundException {
+    public ventanaEnlistarDistribuidores() throws FileNotFoundException {
         
         initComponents();
 
@@ -142,7 +142,7 @@ public final class ventanaEnlistar extends javax.swing.JFrame {
             // TODO add your handling code here:
             new ppal().setVisible(true);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ventanaEnlistar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
 
@@ -165,25 +165,26 @@ public final class ventanaEnlistar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaEnlistar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaEnlistar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaEnlistar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaEnlistar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ventanaEnlistar v = new ventanaEnlistar();
+                    ventanaEnlistarDistribuidores v = new ventanaEnlistarDistribuidores();
                     v.setVisible(true);
                     v.listar();
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ventanaEnlistar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

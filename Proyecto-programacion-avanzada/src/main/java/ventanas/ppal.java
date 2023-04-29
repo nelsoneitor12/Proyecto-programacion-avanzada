@@ -43,7 +43,7 @@ public class ppal extends javax.swing.JFrame {
         BEnlPro = new javax.swing.JButton();
         BVenPro = new javax.swing.JButton();
         BCerrar = new javax.swing.JButton();
-        BEliRep = new javax.swing.JButton();
+        BEmiRep = new javax.swing.JButton();
         BEnlStoDis = new javax.swing.JButton();
         BEliPro = new javax.swing.JButton();
         BModPro = new javax.swing.JButton();
@@ -85,13 +85,13 @@ public class ppal extends javax.swing.JFrame {
             }
         });
 
-        BEliRep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BEliRep.setText("Emitir reporte");
-        BEliRep.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BEliRep.setContentAreaFilled(false);
-        BEliRep.addActionListener(new java.awt.event.ActionListener() {
+        BEmiRep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BEmiRep.setText("Emitir reporte");
+        BEmiRep.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BEmiRep.setContentAreaFilled(false);
+        BEmiRep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BEliRepActionPerformed(evt);
+                BEmiRepActionPerformed(evt);
             }
         });
 
@@ -133,7 +133,7 @@ public class ppal extends javax.swing.JFrame {
                 .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BEliRep, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BEmiRep, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(157, 157, 157)
                         .addComponent(BModPro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -167,7 +167,7 @@ public class ppal extends javax.swing.JFrame {
                     .addComponent(BEliPro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BEliRep, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BEmiRep, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BModPro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(160, 160, 160))
         );
@@ -180,7 +180,9 @@ public class ppal extends javax.swing.JFrame {
         // TODO add your handling code here:
         //bodega.enlistarSecciones();
        try {
+           
            new ventanaEnlistar().setVisible(true);
+           this.dispose();
        } catch (FileNotFoundException ex) {
            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
        }
@@ -189,7 +191,8 @@ public class ppal extends javax.swing.JFrame {
 
     private void BVenProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVenProActionPerformed
         // TODO add your handling code here:
-        //new ventanaAgregarProd().setVisible(true);
+        new ventanaVender().setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_BVenProActionPerformed
 
@@ -201,22 +204,34 @@ public class ppal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BCerrarActionPerformed
 
-    private void BEliRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliRepActionPerformed
+    private void BEmiRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEmiRepActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BEliRepActionPerformed
+        new ventanaEmitirReporte().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BEmiRepActionPerformed
 
     private void BEnlStoDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEnlStoDisActionPerformed
-        // TODO add your handling code here:
+       try {
+           // TODO add your handling code here:
+           new ventanaEnlistarDistribuidores().setVisible(true);
+       } catch (FileNotFoundException ex) {
+           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        this.dispose();
 
     }//GEN-LAST:event_BEnlStoDisActionPerformed
 
     private void BEliProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliProActionPerformed
         // TODO add your handling code here:
+        new ventanaEliminarProd().setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_BEliProActionPerformed
 
     private void BModProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModProActionPerformed
         // TODO add your handling code here:
+        new ventanaModificar().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BModProActionPerformed
 
     /**
@@ -268,7 +283,7 @@ public class ppal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BCerrar;
     private javax.swing.JButton BEliPro;
-    private javax.swing.JButton BEliRep;
+    private javax.swing.JButton BEmiRep;
     private javax.swing.JButton BEnlPro;
     private javax.swing.JButton BEnlStoDis;
     private javax.swing.JButton BModPro;
