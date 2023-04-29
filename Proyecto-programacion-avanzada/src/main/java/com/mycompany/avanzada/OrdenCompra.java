@@ -54,32 +54,32 @@ public class OrdenCompra {
 	}
 	
 	public void finalizarVenta() {
-		Date date= new Date();
+		Date date = new Date();
 
-		fechaEmision_num=(date.getYear()-100)*10000+date.getMonth()*100+date.getDate();
-		fechaEmision_text=(Integer.toString(date.getDate())+"/"+Integer.toString(date.getMonth())+"/"+Integer.toString(date.getYear()-100));
-		nroOrden=(int)(Math.random()*10+1);
+		fechaEmision_num = (date.getYear()-100)*10000 + date.getMonth()*100 + date.getDate();
+		fechaEmision_text = (Integer.toString(date.getDate())+"/"+Integer.toString(date.getMonth())+"/"+Integer.toString(date.getYear()-100));
+		nroOrden = (int)(Math.random()*10+1);
 		MostrarCarrito();
 	}
 	
 	public void actualizarPrecio() {
-		Iterator<TipoProducto> it= carro.iterator();
+		Iterator<TipoProducto> it = carro.iterator();
 		TipoProducto now;
-		double sum=0;
-		double mult=0;
+		double sum = 0;
+		double mult = 0;
 		while(it.hasNext()) {
-			now=it.next();
-			mult=now.getPrecio()*now.getStock();
-			sum+=mult;
+			now = it.next();
+			mult = now.getPrecio()*now.getStock();
+			sum += mult;
 		}
-		total=sum;
+		total = sum;
 	}
 	
 	public void MostrarCarrito() {
-		Iterator<TipoProducto> it= carro.iterator();
+		Iterator<TipoProducto> it = carro.iterator();
 		TipoProducto now;
 		while(it.hasNext()) {
-			now=it.next();
+			now = it.next();
 			System.out.println("Producto="+now.getNombre()+" "+now.getSeccion()+",Cantidad="+now.getStock()+",Precio Unitario=$"+now.getPrecio());
 		}
 		System.out.println("Precio Final: $"+total);

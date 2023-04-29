@@ -6,6 +6,7 @@ package ventanas;
 
 import com.mycompany.avanzada.Bodega;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -131,23 +132,24 @@ public class ppal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BEmiRep, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157)
-                        .addComponent(BModPro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(BVenPro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BEliPro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(BEnlPro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BEnlStoDis, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BEmiRep, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BEnlPro, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                    .addComponent(BVenPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BEliPro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BEnlStoDis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(BModPro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,8 +192,19 @@ public class ppal extends javax.swing.JFrame {
     }//GEN-LAST:event_BEnlProActionPerformed
 
     private void BVenProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVenProActionPerformed
-        // TODO add your handling code here:
-        new ventanaVender().setVisible(true);
+       try {
+           /*
+           try {
+           // TODO add your handling code here:
+           //bodega.Venta();
+           } catch (IOException ex) {
+           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           */
+           new ventanaVentaSeccion().setVisible(true);
+       } catch (FileNotFoundException ex) {
+           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+       }
         this.dispose();
 
     }//GEN-LAST:event_BVenProActionPerformed
@@ -222,15 +235,23 @@ public class ppal extends javax.swing.JFrame {
     }//GEN-LAST:event_BEnlStoDisActionPerformed
 
     private void BEliProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliProActionPerformed
-        // TODO add your handling code here:
-        new ventanaEliminarProd().setVisible(true);
+       try {
+           // TODO add your handling code here:
+           new ventanaElim().setVisible(true);
+       } catch (FileNotFoundException ex) {
+           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+       }
         this.dispose();
 
     }//GEN-LAST:event_BEliProActionPerformed
 
     private void BModProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModProActionPerformed
-        // TODO add your handling code here:
-        new ventanaModificar().setVisible(true);
+       try {
+           // TODO add your handling code here:
+           new ventanaModi().setVisible(true);
+       } catch (FileNotFoundException ex) {
+           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+       }
         this.dispose();
     }//GEN-LAST:event_BModProActionPerformed
 

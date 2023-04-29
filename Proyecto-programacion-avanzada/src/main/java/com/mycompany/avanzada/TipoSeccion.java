@@ -48,7 +48,7 @@ public class TipoSeccion {
         public void enlistarProductos() { 
         	TipoProducto now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
         	for(Entry<String, TipoProducto> r : mapa.entrySet()) {
-        		now=r.getValue();
+        		now = r.getValue();
     			System.out.println("Producto: "+now.getNombre()+",Marca:"+now.getSeccion()+",Precio:"+now.getPrecio()+",Codigo:"+now.getCodigo()+", Stock:"+now.getStock());
     		}
         }
@@ -93,10 +93,6 @@ public class TipoSeccion {
         }
         
         public TipoProducto elimProd(String nombre) {
-        	if (mapa.get(nombre)==null) {
-     			System.out.println("Nombre del producto no encontrado");
-    	 	 	return null;	
-     		}
         	TipoProducto a = mapa.get(nombre); 
         	mapa.remove(nombre,mapa.get(nombre));
         	return a;
