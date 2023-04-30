@@ -6,17 +6,19 @@ import java.util.List;
 
 public class Reportes {
 	
-	private List<OrdenCompra> arrOrdenes= new ArrayList<>();
-	
+	private List<OrdenCompra> arrOrdenes = new ArrayList<>();
+	//getter arregloordenes
+        
 	public Reportes() {
 		// TODO Auto-generated constructor stub
 	}
+        
 	public void agregarOrdenDeCompra(OrdenCompra orden) {
 		arrOrdenes.add(orden);
 	}
 	
 	public void enlistarOrdenesDeCompra() {
-		Iterator<OrdenCompra> it= arrOrdenes.iterator();
+		Iterator<OrdenCompra> it = arrOrdenes.iterator();
 		OrdenCompra now;
 		while(it.hasNext()) {
 			now=it.next();

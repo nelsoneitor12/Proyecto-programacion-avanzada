@@ -48,6 +48,7 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
         for(Entry<String, Distribuidores> r : bodega.getMapaDist().entrySet()) {
         	for(Entry<String, ProdDistrib> o : r.getValue().getMapaD().entrySet()) {
                     now = (ProdDistrib) o.getValue();
+                    /*
                     a[0] = now.getNombre();
                     a[1] = now.getSeccion();
                     a[2] = Integer.toString(now.getCodigo());
@@ -55,6 +56,14 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
                     a[4] = Integer.toString(now.getPrecio());
                     a[5] = now.getMarca();
                     modelo.addRow(a);    
+                    */
+                    a[0] = now.getMarca();
+                    a[1] = now.getNombre();
+                    a[2] = Integer.toString(now.getCodigo());
+                    a[3] = Integer.toString(now.getStock());
+                    a[4] = "$"+Integer.toString(now.getPrecio());
+                    a[5] = now.getSeccion();
+                    modelo.addRow(a); 
     		}
  	}
         Tabla.setModel(modelo);
@@ -90,7 +99,7 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Categoria", "Codigo", "Stock", "Precio", "Marca"
+                "Distribuidor", "Nombre", "Codigo", "Stock", "Precio unitario", "Categoria"
             }
         ) {
             Class[] types = new Class [] {

@@ -1,5 +1,6 @@
 package com.mycompany.avanzada;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -12,11 +13,13 @@ public class OrdenCompra {
 	private double total;
 	private int nroOrden;
 	private List<TipoProducto> carro = new ArrayList<>();
-	
+	//getter lista productos (carro)
 	public OrdenCompra() {
 		// TODO Auto-generated constructor stub
 	}
-	
+	public List<TipoProducto> getCarro() {
+		return carro;
+	}
 	public int getFechaEmision_num() {
 		return fechaEmision_num;
 	}
@@ -55,11 +58,11 @@ public class OrdenCompra {
 	
 	public void finalizarVenta() {
 		Date date = new Date();
-
 		fechaEmision_num = (date.getYear()-100)*10000 + date.getMonth()*100 + date.getDate();
 		fechaEmision_text = (Integer.toString(date.getDate())+"/"+Integer.toString(date.getMonth())+"/"+Integer.toString(date.getYear()-100));
 		nroOrden = (int)(Math.random()*10+1);
 		MostrarCarrito();
+                
 	}
 	
 	public void actualizarPrecio() {

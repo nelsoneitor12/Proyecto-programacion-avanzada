@@ -33,7 +33,6 @@ public class ventanaModificar extends javax.swing.JFrame {
         BCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         BCerrar.setText("X");
         BCerrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

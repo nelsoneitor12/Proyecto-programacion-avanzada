@@ -52,7 +52,7 @@ public final class ventanaEnlistar extends javax.swing.JFrame {
                     a[1] = now.getSeccion();
                     a[2] = Integer.toString(now.getCodigo());
                     a[3] = Integer.toString(now.getStock());
-                    a[4] = Integer.toString(now.getPrecio());
+                    a[4] = "$"+Integer.toString(now.getPrecio());
                     modelo.addRow(a);    
     		}
  	}

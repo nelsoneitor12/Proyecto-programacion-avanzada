@@ -5,23 +5,52 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import ventanas.ventanaVentaSeccion2;
+//import ventanas.ventanaVentaSeccion2;
 
 public class Bodega {
         private File f = new File("./productos.txt"); //se abre el archivo que contiene la lista de productos
         private File d = new File("./StockDistribuidores.txt"); //se abre el archivo que contiene la lista de productos del distribuidor
         private Map<String,TipoSeccion> bodega; //se crea mapa para acceder mas facilmente al stock
         private Map<String,Distribuidores> stockDistrib;
-	private FileClass lecturaTxt = new FileClass();;
-	private Reportes reportes = new Reportes();
-	 
+	private FileClass lecturaTxt;
+	private Reportes reportes;
+        OrdenCompra orden;
 	 
 	public Bodega() throws FileNotFoundException {
+            lecturaTxt = new FileClass();
+            reportes = new Reportes();
             bodega = lecturaTxt.lecturaProductos(f);
             stockDistrib = lecturaTxt.lecturaProductos(d,1);
+            orden = new OrdenCompra();
 	}
+        /*
+        public void guardar() throws IOException {
+                String nombre = "./reporteOrdenNro_"+orden.getNroOrden();
+                File file = new File(nombre);
+                if(!file.exists()){
+                    file.createNewFile();
+                }
+                PrintWriter pw = new PrintWriter(file);
+                pw.println("ORDEN NRO °"+orden.getNroOrden() + "   -   FECHA EMISION: " + orden.getFechaEmision_text());
+                pw.println("-------------------------------------------------------------------------------------------");
+                pw.println("-------------------------------------------------------------------------------------------");
+                pw.println("-------------------------------------------------------------------------------------------");
+		Iterator<TipoProducto> it = getOrden().getCarro().iterator();
+		TipoProducto now;
+		while(it.hasNext()) {
+			now = it.next();
+			pw.println("Producto: "+now.getNombre()+", "+now.getSeccion()+",Cantidad="+now.getStock()+",Precio Unitario=$"+now.getPrecio());
+		}
+		System.out.println("Precio Final: $"+getOrden().getTotal());
+	}
+        */
+        public OrdenCompra getOrden(){
+            return orden;
+        }
 	public FileClass getFile(){
             return lecturaTxt;
         }
@@ -49,11 +78,11 @@ public class Bodega {
 	 
 	}
 	 
-	public void Venta(String nomSeccion, String nomProducto, int cantidad) throws IOException {
+	public Bodega Venta(String nomSeccion, String nomProducto, int cantidad, Bodega bod) throws IOException {
             
 		TipoSeccion seccion;
 		TipoProducto prod, copia;
-		OrdenCompra orden = new OrdenCompra();
+		
 
 		seccion = bodega.get(nomSeccion);
                 prod = seccion.getProducto(nomProducto);
@@ -62,18 +91,25 @@ public class Bodega {
                 seccion.actualizarStock(prod.getNombre(), cantidad);
                 orden.agregarProducto(copia);
                 orden.actualizarPrecio();
-                
-                ventanaVentaSeccion2 ventana = new ventanaVentaSeccion2();//novaafuncar
+                this.getFile().guardarBodega();
 
+                    
+                //ventanaVentaSeccion2 ventana = new ventanaVentaSeccion2();//novaafuncar
+                
                     //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        	orden.finalizarVenta();
-		reportes.agregarOrdenDeCompra(orden);
-		 
+        	
+		
+		return bod;
 	}
 	 
 	public void emitirReporte() {
 		reportes.enlistarOrdenesDeCompra();
 	}
+        public void finalizarVenta() throws IOException{
+            orden.finalizarVenta();
+            reportes.agregarOrdenDeCompra(orden);
+            orden = new OrdenCompra();
+        }
 	 
 	public void eliminarProducto(String seccionAux, String prod) throws IOException{
 
@@ -99,13 +135,13 @@ public class Bodega {
 		int opcion;
 		do {
 		System.out.println("Seleccione que desea modificar");
-        System.out.println("[1] SECCION");
-        System.out.println("[2] NOMBRE");
-        System.out.println("[3] CODIGO");
-        System.out.println("[4] STOCK");
-        System.out.println("[5] PRECIO");
-        System.out.println("[0] SALIR");
-        opcion=Integer.parseInt(lector.readLine());
+                System.out.println("[1] SECCION");
+                System.out.println("[2] NOMBRE");
+                System.out.println("[3] CODIGO");
+                System.out.println("[4] STOCK");
+                System.out.println("[5] PRECIO");
+                System.out.println("[0] SALIR");
+                opcion = Integer.parseInt(lector.readLine());
         
 	        switch(opcion) {
 	         	case 1: //elimina el producto, y lo agrega en otra seccion

@@ -15,6 +15,8 @@ public class App {
 		BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));//se inicializa lector para leer input
 		*/
 		ppal ventana = new ppal();
+                Bodega bodega = new Bodega();
+                ventana.init(bodega);
                 ventana.setVisible(true);
 		//menu
                 //Bodega bodega;

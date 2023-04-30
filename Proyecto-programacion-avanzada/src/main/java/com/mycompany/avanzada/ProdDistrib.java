@@ -15,5 +15,4 @@ public class ProdDistrib extends TipoProducto {
 	public void setMarca(String categoria) {
 		this.marca = categoria;
 	}
-
 }

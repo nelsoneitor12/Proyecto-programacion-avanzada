@@ -7,8 +7,6 @@ package ventanas;
 import com.mycompany.avanzada.Bodega;
 import com.mycompany.avanzada.TipoProducto;
 import com.mycompany.avanzada.TipoSeccion;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
@@ -23,20 +21,19 @@ import javax.swing.JLabel;
  *
  * @author Sashi
  */
-public class ventanaVentaSeccion extends javax.swing.JFrame {
+public class ventanaCompra extends javax.swing.JFrame {
 
     /**
      * Creates new form ventanaVentaSeccion
      */
-
-    Bodega bodega;
-    public ventanaVentaSeccion(Bodega bodega) throws FileNotFoundException {
-        this.bodega = bodega;
+    //boolean flag = false;
+    Bodega bodega  = new Bodega();
+    public ventanaCompra() throws FileNotFoundException {
+        
         initComponents();
         this.generarComboBox1();
-    }
     
-
+    }
     
     public void generarComboBox1() throws FileNotFoundException{
         
@@ -47,6 +44,7 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             i++;
  	}
         Secciones.setModel(new javax.swing.DefaultComboBoxModel(opciones));
+        
     }
     public void generarComboBox2() throws FileNotFoundException{
         if(Secciones.getSelectedItem() != null){
@@ -101,23 +99,23 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jLabel5)
+                .addContainerGap(199, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bOkDialog)
-                .addContainerGap())
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jLabel5)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addComponent(jLabel5)
-                .addGap(71, 71, 71)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
                 .addComponent(bOkDialog)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,6 +141,11 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         Secciones.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 SeccionesItemStateChanged(evt);
+            }
+        });
+        Secciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeccionesActionPerformed(evt);
             }
         });
 
@@ -267,7 +270,7 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             // TODO add your handling code here:
             new ppal().setVisible(true);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ventanaCompra.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         dispose();
@@ -278,18 +281,9 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         String sec = (String) Secciones.getSelectedItem();
         String prod = (String) Productos.getSelectedItem();
         Slider.getValue();
-        try {
-            bodega = bodega.Venta(sec,prod,Slider.getValue(), bodega);
-        } catch (IOException ex) {
-            Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int screenWidth = (int) dim.getWidth();
-        int screenHeight = (int) dim.getHeight();
-        
+        //bodega.Venta(sec,prod,Slider.getValue(),this.getFlag());
         jDialog1.add( new JLabel ("Agregado! :)"));  
-        jDialog1.setLocation(screenWidth / 2 - 150, screenHeight / 2 - 150);
-        jDialog1.setSize(400,200);  
+        jDialog1.setSize(300,300);  
         jDialog1.setVisible(true);
          //setVisible(true);
         //bOkDialog; AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -300,7 +294,7 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             // TODO add your handling code here:
             generarComboBox2();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ventanaCompra.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SeccionesItemStateChanged
 
@@ -343,23 +337,57 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
-            bodega.finalizarVenta();
-
             ppal ventana = new ppal();
-            ventana.init(bodega);
             ventana.setVisible(true);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ventanaCompra.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void SeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeccionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SeccionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ventanaCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ventanaCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ventanaCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ventanaCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new ventanaCompra().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(ventanaCompra.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Productos;

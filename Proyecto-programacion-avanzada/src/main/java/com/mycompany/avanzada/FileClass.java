@@ -12,9 +12,29 @@ public class FileClass {
 	private File texto; 
 	private Map<String, TipoSeccion> bodega = new HashMap<String, TipoSeccion>();
 	private Map<String, Distribuidores> distribuidores = new HashMap<String, Distribuidores>();
-	public FileClass() {
+	
+        
+        public FileClass() {
 	}
 	
+        public void reporteBodega() throws IOException {
+                File file = new File("./Reporte.txt");
+                if(!file.exists()){
+                    file.createNewFile();
+                }
+                PrintWriter pw = new PrintWriter(file);
+		TipoProducto now;
+                for(Map.Entry<String, TipoSeccion> r : bodega.entrySet()) {
+                    pw.println("-----------------------------------------");
+                    pw.println("SECCION: "+r.getKey());
+                    pw.println("-----------------------------------------");
+                    for(Map.Entry<String, TipoProducto> o : r.getValue().getMapa().entrySet()) {
+                        now = o.getValue();
+                        pw.println(now.getNombre()+", "+Integer.toString(now.getCodigo())+", "+Integer.toString(now.getStock())+", "+Integer.toString(now.getPrecio()));
+                    }
+                }
+                pw.close();
+	}
         public void guardarBodega() throws IOException{
             try (FileWriter writerObj = new FileWriter("./productos.txt", false)) {
                 TipoProducto now;
@@ -25,10 +45,9 @@ public class FileClass {
                     }
                 }
                 writerObj.close();
-            }
-            
-            
+            }         
         }
+        
         public void guardarBodegaDist() throws IOException{
             try (FileWriter writerObj = new FileWriter("./StockDistribuidores.txt", false)) {
                 ProdDistrib now;
@@ -40,7 +59,6 @@ public class FileClass {
                 }
             }
         }
-        
         
 	public Map<String,TipoSeccion> lecturaProductos(File txt) throws FileNotFoundException {
 		texto=txt;
