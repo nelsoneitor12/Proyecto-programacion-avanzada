@@ -5,9 +5,9 @@
 package ventanas;
 
 import com.mycompany.avanzada.Bodega;
-import com.mycompany.avanzada.Distribuidores;
-import com.mycompany.avanzada.ProdDistrib;
 import com.mycompany.avanzada.TipoProducto;
+import com.mycompany.avanzada.ProdDistrib;
+import com.mycompany.avanzada.TipoSeccion;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Map;
@@ -32,30 +32,28 @@ public class ventanaModi extends javax.swing.JFrame {
     }
       
     public void generarComboBox1() throws FileNotFoundException{
-        String[] opciones = new String[bodega.getMapaDist().size()];
+        String[] opciones = new String[bodega.getMapa().size()];
         int i = 0;
-        for(Map.Entry<String, Distribuidores> r : bodega.getMapaDist().entrySet()) {
-            for(Entry<String, ProdDistrib> o : r.getValue().getMapaD().entrySet()) {                
-                if(!Arrays.asList(opciones).contains(o.getValue().getMarca())){
-                    opciones[i] = o.getValue().getMarca();
-                    i++;     
-                }  
-            }
+        for(Map.Entry<String, TipoSeccion> r : bodega.getMapa().entrySet()) {
+                    opciones[i] = r.getValue().getNomSeccion();
+                    i++;
  	}
-        
-        Distribuidores.setModel(new javax.swing.DefaultComboBoxModel(opciones));
-        Distribuidores.setSelectedIndex(-1);
+        Secciones.setModel(new javax.swing.DefaultComboBoxModel(opciones));
+        Secciones.setSelectedIndex(-1);
     }
+    
     public void generarComboBox2() throws FileNotFoundException{
-        if(Distribuidores.getSelectedItem() != null){
+        if(Secciones.getSelectedItem() != null){
             //conseguir mapa de productos para asignar nombres a opciones de combobox2
-            Map<String,ProdDistrib> mapa = bodega.getMapaDist().get(Distribuidores.getSelectedItem()).getMapaD();
+            
+            Map<String,TipoProducto> mapa = bodega.getMapa().get(Secciones.getSelectedItem()).getMapa();
             String[] opciones = new String[mapa.size()];
             int i = 0;
-            for(Entry<String, ProdDistrib> r : mapa.entrySet()) {
-        	opciones[i] = r.getValue().getNombre();
-    		i++;
+            for(Entry<String, TipoProducto> o : mapa.entrySet()) {                
+                opciones[i] = o.getValue().getNombre();
+                i++;     
             }
+
             Productos.setModel(new javax.swing.DefaultComboBoxModel(opciones));
         }
         
@@ -72,7 +70,7 @@ public class ventanaModi extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        Distribuidores = new javax.swing.JComboBox<>();
+        Secciones = new javax.swing.JComboBox<>();
         Productos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -96,9 +94,9 @@ public class ventanaModi extends javax.swing.JFrame {
             }
         });
 
-        Distribuidores.addItemListener(new java.awt.event.ItemListener() {
+        Secciones.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DistribuidoresItemStateChanged(evt);
+                SeccionesItemStateChanged(evt);
             }
         });
 
@@ -109,7 +107,7 @@ public class ventanaModi extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel1.setText("Seleccione el distribuidor del producto que busca");
+        jLabel1.setText("Seleccione la seccion del producto que busca");
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel2.setText("Seleccione producto");
@@ -122,10 +120,10 @@ public class ventanaModi extends javax.swing.JFrame {
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(Distribuidores, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(141, 357, Short.MAX_VALUE))
+                .addGap(141, 379, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(662, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +142,7 @@ public class ventanaModi extends javax.swing.JFrame {
                 .addGap(103, 103, 103)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Distribuidores, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -174,20 +172,20 @@ public class ventanaModi extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String d = (String) Distribuidores.getSelectedItem();
+        String d = (String) Secciones.getSelectedItem();
         String p = (String) Productos.getSelectedItem();
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void DistribuidoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DistribuidoresItemStateChanged
+    private void SeccionesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SeccionesItemStateChanged
         try {
             // TODO add your handling code here:
             generarComboBox2();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaModi.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_DistribuidoresItemStateChanged
+    }//GEN-LAST:event_SeccionesItemStateChanged
 
     private void ProductosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProductosItemStateChanged
         // TODO add your handling code here:
@@ -198,8 +196,8 @@ public class ventanaModi extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Distribuidores;
     private javax.swing.JComboBox<String> Productos;
+    private javax.swing.JComboBox<String> Secciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
