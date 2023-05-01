@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
@@ -59,8 +58,6 @@ public class ppal extends javax.swing.JFrame {
         BotonModProd = new javax.swing.JButton();
         BotonComprarADist = new javax.swing.JButton();
         BotonEmitirReporteVenta = new javax.swing.JButton();
-
-        jDialog1.setUndecorated(true);
 
         jButton1.setText("Ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

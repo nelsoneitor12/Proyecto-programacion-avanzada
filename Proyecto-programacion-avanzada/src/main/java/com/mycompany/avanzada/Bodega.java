@@ -1,10 +1,9 @@
 package com.mycompany.avanzada;
 
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Map.Entry;
 //import ventanas.ventanaVentaSeccion2;
@@ -65,8 +64,6 @@ public class Bodega {
             
 		TipoSeccion seccion;
 		TipoProducto prod, copia;
-		
-
 		seccion = bodega.get(nomSeccion);
                 prod = seccion.getProducto(nomProducto);
                 copia = seccion.getCloneProducto(nomProducto);
@@ -93,63 +90,36 @@ public class Bodega {
  		bodega.get(seccionAux).elimProd(prod); //elimina el objeto de la seccion indicada
         }
          
-	public void modificarProducto() throws IOException{
-		BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("Ingrese seccion del producto: ");
-		String[] actual;
-		actual = new String[5];
-		actual[4] = lector.readLine();
-		if (bodega.get(actual[4]) == null) { //verifica que la seccion exista
-                    System.out.println("Seccion no encontrada");
-                    return;
-		}
-		System.out.print("Ingrese nombre del producto que desea modificar: ");
-		actual[0] = lector.readLine();
-		if (bodega.get(actual[4]).existeProducto(actual[0])== false) { //verifica que el producto exista en la seccion
-		 	 	System.out.println("Producto no encontrado");
-		 	 	return;
-		}
-		int opcion;
-		do {
-		System.out.println("Seleccione que desea modificar");
-                System.out.println("[1] SECCION");
-                System.out.println("[2] NOMBRE");
-                System.out.println("[3] CODIGO");
-                System.out.println("[4] STOCK");
-                System.out.println("[5] PRECIO");
-                System.out.println("[0] SALIR");
-                opcion = Integer.parseInt(lector.readLine());
-        
+	public void modificarProducto(String s, String p, String opcion,String newValor) throws IOException{
+                //actual[4] = s;
+                //actual[0] = p;
+                //VENTANA PARA ELEGIR
+                /*
+                bodega.get(s) es  mapa de secciones
+                */
+		TipoProducto a = bodega.get(s).getProducto(p); // o = bodega.get(s).elimProd(p);
 	        switch(opcion) {
-	         	case 1: //elimina el producto, y lo agrega en otra seccion
-	         		TipoProducto a = bodega.get(actual[4]).elimProd(actual[0]);
-	         		System.out.println("Seleccione la nueva seccion para el producto");
-	         		String aux = lector.readLine();
-	         		bodega.get(aux).agregarProducto(a);
+	         	case "Nombre": //elimina el producto, y lo agrega en otra seccion
+	         		a = bodega.get(s).elimProd(p);
+                                a.setSeccion(newValor);
+	         		bodega.get(newValor).agregarProducto(a);
 	         		break;
 	         
-	         	case 2: //elimina el producto y lo vuelve a agrega con un nombre(key) distinto
-	         		TipoProducto aa = bodega.get(actual[4]).elimProd(actual[0]);
-	         		System.out.println("Seleccione el nuevo nombre para el producto");
-	         		actual[0] = lector.readLine();
-	         		aa.setNombre(actual[0]);
-	         		bodega.get(actual[4]).agregarProducto(aa);
+	         	case "Seccion": //elimina el producto y lo vuelve a agrega con un nombre(key) distinto
+	         		a = bodega.get(s).elimProd(p);
+	         		a.setNombre(newValor);
+	         		bodega.get(s).agregarProducto(a);
 	         		break;
-	         	case 3:// modifica el codigo
-	         		bodega.get(actual[4]).modificarProducto(opcion,actual);
+	         	case "Codigo":// modifica el codigo
+	         		bodega.get(s).getProducto(p).setCodigo(Integer.parseInt(newValor));
 	         		break;
-	         	case 4:// modifica el stock
-	         		bodega.get(actual[4]).modificarProducto(opcion,actual);
+	         	case "Stock":// modifica el stock
+	         		bodega.get(s).getProducto(p).setStock(Integer.parseInt(newValor));
 	         		break;
-	         	case 5://modifica el precio
-	         		bodega.get(actual[4]).modificarProducto(opcion,actual);
+	         	case "Precio"://modifica el precio
+	         		bodega.get(s).getProducto(p).setPrecio(Integer.parseInt(newValor));
 	         		break;
-	         	case 6://modifica marca
-	         		bodega.get(actual[4]).modificarProducto(opcion,actual);
-	         		break;
-	         	default:
-	         		break;
-	         }
-         }while (opcion != 0);
-	 }
+	        }
+        this.getFile().guardarBodega();
+	}
 }

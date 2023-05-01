@@ -85,8 +85,6 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
-        jDialog1.setUndecorated(true);
-
         jLabel5.setText("Agregado! :)");
 
         bOkDialog.setText("Ok");

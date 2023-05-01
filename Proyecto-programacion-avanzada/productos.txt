@@ -1,4 +1,4 @@
-Detergente en polvo 3kg,15240,30,3900,Limpieza
+Detergente en polvo 3kg,15240,40,3900,Limpieza
 Suavizante ropa ultrasuave 0.5L,14121,13,3000,Limpieza
 Trapero humedo 12 unidades,45621,1,2300,Limpieza
 Limpiador multiuso 400g,11112,20,1000,Limpieza
@@ -6,7 +6,7 @@ Lavaloza limon 5L,10365,14,3100,Limpieza
 Limpia vidrios 500cc,12121,14,2800,Limpieza
 Cloro gel 900ml,25142,20,1900,Limpieza
 Alimento enlatado gato adulto 85g,11668,30,900,Mascotas
-Arena sanitaria gatos 4kg,45867,0,10000,Mascotas
+Arena sanitaria gatos 4kg,45867,0,15000,Mascotas
 Alimento perro adulto 100g,99998,11,600,Mascotas
 Alimento gato adulto 8kg,36941,9,24000,Mascotas
 Lata de cerveza,66688,38,500,Botilleria

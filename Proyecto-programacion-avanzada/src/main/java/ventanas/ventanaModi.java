@@ -9,11 +9,14 @@ import com.mycompany.avanzada.TipoProducto;
 import com.mycompany.avanzada.ProdDistrib;
 import com.mycompany.avanzada.TipoSeccion;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,7 +56,6 @@ public class ventanaModi extends javax.swing.JFrame {
                 opciones[i] = o.getValue().getNombre();
                 i++;     
             }
-
             Productos.setModel(new javax.swing.DefaultComboBoxModel(opciones));
         }
         
@@ -119,11 +121,15 @@ public class ventanaModi extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(141, 379, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(141, 379, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(662, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,10 +178,32 @@ public class ventanaModi extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String d = (String) Secciones.getSelectedItem();
+        String opciones[] = {"Seccion", "Nombre", "Codigo", "Stock", "Precio"};
+        JComboBox cb = new JComboBox(opciones);
+        String s = (String) Secciones.getSelectedItem();
         String p = (String) Productos.getSelectedItem();
-        
+        int input;
+        input = JOptionPane.showConfirmDialog(this,cb,"eliga que cambiar",JOptionPane.DEFAULT_OPTION);
 
+        if(input == JOptionPane.OK_OPTION){
+            String opcion = (String) cb.getSelectedItem();
+            String newValue = JOptionPane.showInputDialog(null, "nuevo valor");
+            try {
+                bodega.modificarProducto(s ,p ,opcion ,newValue);
+            } catch (IOException ex) {
+                Logger.getLogger(ventanaModi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dispose();
+            ppal ventana;
+            try {
+                ventana = new ppal();
+                ventana.init(bodega);
+                ventana.setVisible(true);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ventanaModi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void SeccionesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SeccionesItemStateChanged
