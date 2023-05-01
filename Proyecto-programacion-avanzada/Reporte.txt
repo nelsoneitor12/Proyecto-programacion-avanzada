@@ -1,19 +1,19 @@
 -----------------------------------------
 SECCION: Limpieza
 -----------------------------------------
-Detergente en polvo 3kg, 15240, 30, 3900
 Suavizante ropa ultrasuave 0.5L, 14121, 13, 3000
 Trapero humedo 12 unidades, 45621, 1, 2300
+null, 15240, 40, 3900
 Limpiador multiuso 400g, 11112, 20, 1000
 Lavaloza limon 5L, 10365, 14, 3100
-Limpia vidrios 500cc, 12121, 14, 2800
+Limpia vidrios 500cc, 2, 14, 2800
 Cloro gel 900ml, 25142, 20, 1900
 -----------------------------------------
 SECCION: Mascotas
 -----------------------------------------
-Alimento enlatado gato adulto 85g, 11668, 30, 900
-Arena sanitaria gatos 4kg, 45867, 0, 10000
-Alimento perro adulto 100g, 99998, 11, 600
+Alimento enlatado gato adulto 85g, 11668, 21, 900
+Arena sanitaria gatos 4kg, 45867, 0, 15000
+Alimento perro adulto 100g, 99998, -10, 600
 Alimento gato adulto 8kg, 36941, 9, 24000
 -----------------------------------------
 SECCION: Botilleria

@@ -58,7 +58,7 @@ public class TipoSeccion {
 			return 0;
         }
         
-        public void actualizarStock(String indice, int i) throws IOException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
+        public void actualizarStock(String indice, int i) throws IOException,StockAmountException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
         	int stock=i;
         	mapa.get(indice).removeStock(stock);
         }

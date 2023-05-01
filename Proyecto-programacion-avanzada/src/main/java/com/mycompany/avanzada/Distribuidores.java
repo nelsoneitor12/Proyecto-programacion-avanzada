@@ -36,7 +36,7 @@ public class Distribuidores extends TipoSeccion{
 		}
         }
 	
-	public void actualizarStock(String indice) throws IOException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
+	public void actualizarStock(String indice) throws IOException,StockAmountException{ //suma el stock que el usuario indique si el producto ya esta en el arreglo
     	int stock;
     	BufferedReader line = new BufferedReader(new InputStreamReader(System.in));
     	System.out.println("El producto ya se encuentra en bodega, ingrese la cantidad de stock que desea agregar: ");

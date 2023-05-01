@@ -5,6 +5,7 @@
 package ventanas;
 
 import com.mycompany.avanzada.Bodega;
+import com.mycompany.avanzada.StockAmountException;
 import com.mycompany.avanzada.TipoProducto;
 import com.mycompany.avanzada.TipoSeccion;
 import java.awt.Dimension;
@@ -16,6 +17,7 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -284,8 +286,12 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         Slider.getValue();
         try {
             bodega = bodega.Venta(sec,prod,Slider.getValue(), bodega);
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) {
             Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (StockAmountException eS) {
+        	JOptionPane.showMessageDialog(null,"Error: Stock insuficiente");
         }
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) dim.getWidth();

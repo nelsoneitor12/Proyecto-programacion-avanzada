@@ -60,7 +60,7 @@ public class Bodega {
 	 
 	}
 	 
-	public Bodega Venta(String nomSeccion, String nomProducto, int cantidad, Bodega bod) throws IOException {
+	public Bodega Venta(String nomSeccion, String nomProducto, int cantidad, Bodega bod) throws IOException, StockAmountException {
             
 		TipoSeccion seccion;
 		TipoProducto prod, copia;
@@ -68,7 +68,9 @@ public class Bodega {
                 prod = seccion.getProducto(nomProducto);
                 copia = seccion.getCloneProducto(nomProducto);
                 copia.setStock(cantidad);
+                
                 seccion.actualizarStock(prod.getNombre(), cantidad);
+                
                 orden.agregarProducto(copia);
                 orden.actualizarPrecio();
                 this.getFile().guardarBodega();
@@ -90,7 +92,7 @@ public class Bodega {
  		bodega.get(seccionAux).elimProd(prod); //elimina el objeto de la seccion indicada
         }
          
-	public void modificarProducto(String s, String p, String opcion,String newValor) throws IOException{
+	public void modificarProducto(String s, String p, String opcion,String newValor) throws IOException, InvalidNumberException{
                 //actual[4] = s;
                 //actual[0] = p;
                 //VENTANA PARA ELEGIR
@@ -99,24 +101,27 @@ public class Bodega {
                 */
 		TipoProducto a = bodega.get(s).getProducto(p); // o = bodega.get(s).elimProd(p);
 	        switch(opcion) {
-	         	case "Nombre": //elimina el producto, y lo agrega en otra seccion
+	         	case "Seccion": //elimina el producto, y lo agrega en otra seccion
 	         		a = bodega.get(s).elimProd(p);
                                 a.setSeccion(newValor);
 	         		bodega.get(newValor).agregarProducto(a);
 	         		break;
 	         
-	         	case "Seccion": //elimina el producto y lo vuelve a agrega con un nombre(key) distinto
+	         	case "Nombre": //elimina el producto y lo vuelve a agrega con un nombre(key) distinto
 	         		a = bodega.get(s).elimProd(p);
 	         		a.setNombre(newValor);
 	         		bodega.get(s).agregarProducto(a);
 	         		break;
 	         	case "Codigo":// modifica el codigo
+	         		if (Integer.parseInt(newValor)<1) throw new InvalidNumberException();
 	         		bodega.get(s).getProducto(p).setCodigo(Integer.parseInt(newValor));
 	         		break;
 	         	case "Stock":// modifica el stock
+	         		if (Integer.parseInt(newValor)<0) throw new InvalidNumberException();
 	         		bodega.get(s).getProducto(p).setStock(Integer.parseInt(newValor));
 	         		break;
 	         	case "Precio"://modifica el precio
+	         		if (Integer.parseInt(newValor)<1) throw new InvalidNumberException();
 	         		bodega.get(s).getProducto(p).setPrecio(Integer.parseInt(newValor));
 	         		break;
 	        }
