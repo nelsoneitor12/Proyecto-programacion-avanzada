@@ -257,7 +257,6 @@ public class ppal extends javax.swing.JFrame {
         // TODO add your handling code here:
         //bodega.enlistarSecciones();
        try {
-           
            new ventanaEnlistar().setVisible(true);
            this.dispose();
        } catch (FileNotFoundException ex) {
@@ -313,12 +312,13 @@ public class ppal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEmitirReporteTxtActionPerformed
 
     private void BotonEnlistarStockDistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEnlistarStockDistActionPerformed
-       try {
+        try {
            // TODO add your handling code here:
-           new ventanaEnlistarDistribuidores().setVisible(true);
-       } catch (FileNotFoundException ex) {
-           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
-       }
+            ventanaEnlistarDistribuidores ventana = new ventanaEnlistarDistribuidores(bodega);
+            ventana.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
 
     }//GEN-LAST:event_BotonEnlistarStockDistActionPerformed

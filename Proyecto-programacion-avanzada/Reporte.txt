@@ -2,32 +2,32 @@
 SECCION: Limpieza
 -----------------------------------------
 Detergente en polvo 3kg, 15240, 30, 3900
-Suavizante ropa ultrasuave 0.5L, 14121, 15, 3000
-Trapero humedo 12 unidades, 45621, 5, 2300
+Suavizante ropa ultrasuave 0.5L, 14121, 13, 3000
+Trapero humedo 12 unidades, 45621, 1, 2300
 Limpiador multiuso 400g, 11112, 20, 1000
-Lavaloza limon 5L, 10365, 20, 3100
+Lavaloza limon 5L, 10365, 14, 3100
 Limpia vidrios 500cc, 12121, 14, 2800
 Cloro gel 900ml, 25142, 20, 1900
 -----------------------------------------
 SECCION: Mascotas
 -----------------------------------------
 Alimento enlatado gato adulto 85g, 11668, 30, 900
-Arena sanitaria gatos 4kg, 45867, 5, 10000
+Arena sanitaria gatos 4kg, 45867, 1, 10000
 Alimento perro adulto 100g, 99998, 11, 600
-Alimento gato adulto 8kg, 36941, 15, 24000
+Alimento gato adulto 8kg, 36941, 9, 24000
 -----------------------------------------
 SECCION: Botilleria
 -----------------------------------------
 Lata de cerveza, 66688, 38, 500
-Jugo naranja 5L, 14785, 33, 3000
-Agua mineral 1L, 54625, 22, 800
+Jugo naranja 5L, 14785, 20, 3000
+Agua mineral 1L, 54625, 11, 800
 Bebida energetica 450cc, 33332, 9, 1700
-Vino en caja 500ml, 44441, 16, 2300
+Vino en caja 500ml, 44441, 15, 2300
 -----------------------------------------
 SECCION: Despensa
 -----------------------------------------
-Pure de papas 125g, 66666, 13, 900
-Atun 100g, 55760, 47, 1400
-Arroz grado 2 1kg, 44444, 19, 1500
+Pure de papas 125g, 66666, 8, 900
+Atun 100g, 55760, 44, 1400
+Arroz grado 2 1kg, 44444, 6, 1500
 Fideos 400g, 13138, 50, 1200
 Sopa pollo en polvo 70g, 88878, 23, 500

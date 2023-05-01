@@ -25,11 +25,10 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
      */
     DefaultTableModel modelo;
     Bodega bodega;
-    public ventanaEnlistarDistribuidores() throws FileNotFoundException {
+    public ventanaEnlistarDistribuidores(Bodega bodega) throws FileNotFoundException {
         
         initComponents();
-
-        bodega = new Bodega();
+        this.bodega = bodega;
         modelo = new DefaultTableModel();
         modelo.addColumn("C1"); 
         modelo.addColumn("C2");
@@ -38,8 +37,8 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
         modelo.addColumn("C5"); 
         modelo.addColumn("C6");
         this.listar();
-        
     }
+    
     
     public void listar() throws FileNotFoundException{
         String[] a = new String[6];
@@ -149,7 +148,9 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // TODO add your handling code here:
-            new ppal().setVisible(true);
+            ppal ventana = new ppal();
+            ventana.init(bodega);
+            ventana.setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -163,5 +164,7 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    
 
 }
