@@ -9,6 +9,7 @@ import com.mycompany.avanzada.Distribuidores;
 import com.mycompany.avanzada.ProdDistrib;
 import com.mycompany.avanzada.TipoProducto;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -31,19 +32,19 @@ public class ventanaModi extends javax.swing.JFrame {
     }
       
     public void generarComboBox1() throws FileNotFoundException{
-        
         String[] opciones = new String[bodega.getMapaDist().size()];
         int i = 0;
         for(Map.Entry<String, Distribuidores> r : bodega.getMapaDist().entrySet()) {
-            for(Entry<String, ProdDistrib> o : r.getValue().getMapaD().entrySet()) {
-                if(i != 0 && opciones[i] == opciones[i-1]){
-                    i--;
-                }
-                opciones[i] = o.getValue().getMarca();
-                i++;    
+            for(Entry<String, ProdDistrib> o : r.getValue().getMapaD().entrySet()) {                
+                if(!Arrays.asList(opciones).contains(o.getValue().getMarca())){
+                    opciones[i] = o.getValue().getMarca();
+                    i++;     
+                }  
             }
  	}
+        
         Distribuidores.setModel(new javax.swing.DefaultComboBoxModel(opciones));
+        Distribuidores.setSelectedIndex(-1);
     }
     public void generarComboBox2() throws FileNotFoundException{
         if(Distribuidores.getSelectedItem() != null){

@@ -139,7 +139,9 @@ public final class ventanaEnlistar extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // TODO add your handling code here:
-            new ppal().setVisible(true);
+            ppal ventana = new ppal();
+            ventana.init(bodega);
+            ventana.setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaEnlistar.class.getName()).log(Level.SEVERE, null, ex);
         }
