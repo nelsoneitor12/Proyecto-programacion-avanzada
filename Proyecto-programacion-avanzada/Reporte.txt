@@ -12,7 +12,7 @@ Cloro gel 900ml, 25142, 20, 1900
 SECCION: Mascotas
 -----------------------------------------
 Alimento enlatado gato adulto 85g, 11668, 30, 900
-Arena sanitaria gatos 4kg, 45867, 1, 10000
+Arena sanitaria gatos 4kg, 45867, 0, 10000
 Alimento perro adulto 100g, 99998, 11, 600
 Alimento gato adulto 8kg, 36941, 9, 24000
 -----------------------------------------
@@ -30,4 +30,3 @@ Pure de papas 125g, 66666, 8, 900
 Atun 100g, 55760, 44, 1400
 Arroz grado 2 1kg, 44444, 6, 1500
 Fideos 400g, 13138, 50, 1200
-Sopa pollo en polvo 70g, 88878, 23, 500

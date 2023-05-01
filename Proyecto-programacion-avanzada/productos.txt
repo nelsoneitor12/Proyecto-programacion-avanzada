@@ -18,4 +18,3 @@ Pure de papas 125g,66666,8,900,Despensa
 Atun 100g,55760,44,1400,Despensa
 Arroz grado 2 1kg,44444,6,1500,Despensa
 Fideos 400g,13138,50,1200,Despensa
-Sopa pollo en polvo 70g,88878,23,500,Despensa

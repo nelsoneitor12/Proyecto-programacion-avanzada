@@ -177,7 +177,9 @@ public class ventanaElim extends javax.swing.JFrame {
         }
         this.dispose();
         try {
-            new ppal().setVisible(true);
+            ppal ventana = new ppal();
+            ventana.init(bodega);
+            ventana.setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaElim.class.getName()).log(Level.SEVERE, null, ex);
         }

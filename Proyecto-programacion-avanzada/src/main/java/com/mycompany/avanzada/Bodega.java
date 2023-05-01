@@ -29,27 +29,7 @@ public class Bodega {
         public Reportes getRep(){
             return this.reportes;
         }
-        /*
-        public void guardar() throws IOException {
-                String nombre = "./reporteOrdenNro_"+orden.getNroOrden();
-                File file = new File(nombre);
-                if(!file.exists()){
-                    file.createNewFile();
-                }
-                PrintWriter pw = new PrintWriter(file);
-                pw.println("ORDEN NRO °"+orden.getNroOrden() + "   -   FECHA EMISION: " + orden.getFechaEmision_text());
-                pw.println("-------------------------------------------------------------------------------------------");
-                pw.println("-------------------------------------------------------------------------------------------");
-                pw.println("-------------------------------------------------------------------------------------------");
-		Iterator<TipoProducto> it = getOrden().getCarro().iterator();
-		TipoProducto now;
-		while(it.hasNext()) {
-			now = it.next();
-			pw.println("Producto: "+now.getNombre()+", "+now.getSeccion()+",Cantidad="+now.getStock()+",Precio Unitario=$"+now.getPrecio());
-		}
-		System.out.println("Precio Final: $"+getOrden().getTotal());
-	}
-        */
+
         
         public OrdenCompra getOrden(){
             return orden;

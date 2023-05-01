@@ -7,7 +7,6 @@ package ventanas;
 import com.mycompany.avanzada.Bodega;
 import com.mycompany.avanzada.Distribuidores;
 import com.mycompany.avanzada.ProdDistrib;
-import com.mycompany.avanzada.TipoProducto;
 import java.io.FileNotFoundException;
 import javax.swing.table.DefaultTableModel;
 import java.util.Map.Entry;
@@ -47,15 +46,6 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
         for(Entry<String, Distribuidores> r : bodega.getMapaDist().entrySet()) {
         	for(Entry<String, ProdDistrib> o : r.getValue().getMapaD().entrySet()) {
                     now = (ProdDistrib) o.getValue();
-                    /*
-                    a[0] = now.getNombre();
-                    a[1] = now.getSeccion();
-                    a[2] = Integer.toString(now.getCodigo());
-                    a[3] = Integer.toString(now.getStock());
-                    a[4] = Integer.toString(now.getPrecio());
-                    a[5] = now.getMarca();
-                    modelo.addRow(a);    
-                    */
                     a[0] = now.getMarca();
                     a[1] = now.getNombre();
                     a[2] = Integer.toString(now.getCodigo());
@@ -155,7 +145,6 @@ public final class ventanaEnlistarDistribuidores extends javax.swing.JFrame {
             Logger.getLogger(ventanaEnlistarDistribuidores.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

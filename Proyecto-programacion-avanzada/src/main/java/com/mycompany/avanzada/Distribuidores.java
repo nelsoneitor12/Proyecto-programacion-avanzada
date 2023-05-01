@@ -29,12 +29,12 @@ public class Distribuidores extends TipoSeccion{
     }
 	
 	public void enlistarProductos() { 
-    	ProdDistrib now = new ProdDistrib();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
-    	for(Entry<String, ProdDistrib> r : mapa.entrySet()) {
-    		now=r.getValue();
-			System.out.println("Producto: "+now.getNombre()+",Precio unitario:$"+now.getPrecio()+",Stock Disponible:"+now.getStock()+",Categoria:"+now.getMarca());
+            ProdDistrib now = new ProdDistrib();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
+            for(Entry<String, ProdDistrib> r : mapa.entrySet()) {
+    		now = r.getValue();
+                    System.out.println("Producto: "+now.getNombre()+",Precio unitario:$"+now.getPrecio()+",Stock Disponible:"+now.getStock()+",Categoria:"+now.getMarca());
 		}
-    }
+        }
 	
 	public void actualizarStock(String indice) throws IOException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
     	int stock;

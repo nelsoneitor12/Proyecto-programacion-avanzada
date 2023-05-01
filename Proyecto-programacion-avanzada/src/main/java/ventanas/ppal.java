@@ -60,6 +60,8 @@ public class ppal extends javax.swing.JFrame {
         BotonComprarADist = new javax.swing.JButton();
         BotonEmitirReporteVenta = new javax.swing.JButton();
 
+        jDialog1.setUndecorated(true);
+
         jButton1.setText("Ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,7 +309,7 @@ public class ppal extends javax.swing.JFrame {
             Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
         }
        
-        //new ventanaEmitirReporte().setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_BotonEmitirReporteTxtActionPerformed
 
@@ -335,12 +337,13 @@ public class ppal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonElimProdActionPerformed
 
     private void BotonModProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModProdActionPerformed
-       try {
-           // TODO add your handling code here:
-           new ventanaModi().setVisible(true);
-       } catch (FileNotFoundException ex) {
-           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            // TODO add your handling code here:
+            ventanaModi ventana = new ventanaModi(bodega);
+            ventana.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_BotonModProdActionPerformed
 
@@ -352,13 +355,13 @@ public class ppal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDialog1.dispose();
         ppal ventana;
-       try {
-           ventana = new ppal();
-           ventana.init(bodega);
-           ventana.setVisible(true);
-       } catch (FileNotFoundException ex) {
-           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        try {
+            ventana = new ppal();
+            ventana.init(bodega);
+            ventana.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BotonEmitirReporteVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEmitirReporteVentaActionPerformed
