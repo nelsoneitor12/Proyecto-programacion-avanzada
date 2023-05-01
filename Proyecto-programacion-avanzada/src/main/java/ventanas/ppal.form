@@ -75,31 +75,35 @@
               <EmptySpace min="131" pref="131" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="BEmiRep" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="BotonEmitirReporteTxt" min="-2" pref="210" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="BEliPro" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="BotonEmitirReporteVenta" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                              <Component id="BotonElimProd" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="titulo" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="BEnlPro" pref="210" max="32767" attributes="0"/>
-                                      <Component id="BVenPro" max="32767" attributes="0"/>
+                                      <Component id="BotonEnlistarProd" pref="210" max="32767" attributes="0"/>
+                                      <Component id="BotonVenderProductos" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="BEnlStoDis" min="-2" pref="210" max="-2" attributes="0"/>
+                                          <Component id="BotonEnlistarStockDist" min="-2" pref="210" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                                          <Component id="BVenPro1" max="32767" attributes="0"/>
+                                          <Component id="BotonComprarADist" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="BModPro" min="-2" pref="210" max="-2" attributes="0"/>
+                              <Component id="BotonModProd" min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="72" max="32767" attributes="0"/>
@@ -115,33 +119,36 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" pref="73" max="-2" attributes="0"/>
+                  <Component id="titulo" min="-2" pref="73" max="-2" attributes="0"/>
                   <Component id="BCerrar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="55" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BEnlPro" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="BEnlStoDis" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="BotonEnlistarProd" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="BotonEnlistarStockDist" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BVenPro" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="BVenPro1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="BotonVenderProductos" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="BotonComprarADist" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BEmiRep" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="BModPro" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="BotonEmitirReporteTxt" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="BotonModProd" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BEliPro" min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BotonElimProd" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="BotonEmitirReporteVenta" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="titulo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Jokerman" size="36" style="0"/>
@@ -158,7 +165,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="BEnlPro">
+    <Component class="javax.swing.JButton" name="BotonEnlistarProd">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -172,15 +179,15 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BEnlProActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEnlistarProdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BVenPro">
+    <Component class="javax.swing.JButton" name="BotonVenderProductos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Vender producto"/>
+        <Property name="text" type="java.lang.String" value="Vender productos"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
@@ -189,7 +196,7 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BVenProActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonVenderProductosActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BCerrar">
@@ -209,12 +216,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BCerrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BEmiRep">
+    <Component class="javax.swing.JButton" name="BotonEmitirReporteTxt">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Emitir reporte"/>
+        <Property name="text" type="java.lang.String" value="Emitir reporte de bodega.txt"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
@@ -223,10 +230,10 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BEmiRepActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEmitirReporteTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BEnlStoDis">
+    <Component class="javax.swing.JButton" name="BotonEnlistarStockDist">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -240,10 +247,10 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BEnlStoDisActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEnlistarStockDistActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BEliPro">
+    <Component class="javax.swing.JButton" name="BotonElimProd">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -257,10 +264,10 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BEliProActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonElimProdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BModPro">
+    <Component class="javax.swing.JButton" name="BotonModProd">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -274,10 +281,10 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BModProActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonModProdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BVenPro1">
+    <Component class="javax.swing.JButton" name="BotonComprarADist">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -291,7 +298,24 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BVenPro1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonComprarADistActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BotonEmitirReporteVenta">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Emitir reporte de venta"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEmitirReporteVentaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

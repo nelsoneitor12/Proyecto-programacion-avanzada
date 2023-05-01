@@ -1,21 +1,21 @@
 Detergente en polvo 3kg,15240,30,3900,Limpieza
-Suavizante ropa ultrasuave 0.5L,14121,15,3000,Limpieza
-Trapero humedo 12 unidades,45621,5,2300,Limpieza
+Suavizante ropa ultrasuave 0.5L,14121,13,3000,Limpieza
+Trapero humedo 12 unidades,45621,2,2300,Limpieza
 Limpiador multiuso 400g,11112,20,1000,Limpieza
-Lavaloza limon 5L,10365,20,3100,Limpieza
+Lavaloza limon 5L,10365,14,3100,Limpieza
 Limpia vidrios 500cc,12121,14,2800,Limpieza
 Cloro gel 900ml,25142,20,1900,Limpieza
 Alimento enlatado gato adulto 85g,11668,30,900,Mascotas
-Arena sanitaria gatos 4kg,45867,7,10000,Mascotas
+Arena sanitaria gatos 4kg,45867,1,10000,Mascotas
 Alimento perro adulto 100g,99998,11,600,Mascotas
-Alimento gato adulto 8kg,36941,15,24000,Mascotas
+Alimento gato adulto 8kg,36941,9,24000,Mascotas
 Lata de cerveza,66688,38,500,Botilleria
-Jugo naranja 5L,14785,35,3000,Botilleria
-Agua mineral 1L,54625,24,800,Botilleria
+Jugo naranja 5L,14785,20,3000,Botilleria
+Agua mineral 1L,54625,20,800,Botilleria
 Bebida energetica 450cc,33332,9,1700,Botilleria
-Vino en caja 500ml,44441,16,2300,Botilleria
+Vino en caja 500ml,44441,15,2300,Botilleria
 Pure de papas 125g,66666,13,900,Despensa
-Atun 100g,55760,47,1400,Despensa
-Arroz grado 2 1kg,44444,20,1500,Despensa
+Atun 100g,55760,44,1400,Despensa
+Arroz grado 2 1kg,44444,11,1500,Despensa
 Fideos 400g,13138,50,1200,Despensa
 Sopa pollo en polvo 70g,88878,23,500,Despensa

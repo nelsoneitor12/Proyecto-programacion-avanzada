@@ -15,8 +15,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 /**
@@ -34,6 +32,7 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         this.bodega = bodega;
         initComponents();
         this.generarComboBox1();
+        Secciones.setSelectedIndex(-1);
     }
     
 
@@ -60,8 +59,6 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             }
             Productos.setModel(new javax.swing.DefaultComboBoxModel(opciones));
         }
-        
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,6 +140,11 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         Secciones.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 SeccionesItemStateChanged(evt);
+            }
+        });
+        Secciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeccionesActionPerformed(evt);
             }
         });
 
@@ -265,7 +267,9 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         
         try {
             // TODO add your handling code here:
-            new ppal().setVisible(true);
+            ppal ventana = new ppal();
+            ventana.setVisible(true);
+            ventana.init(bodega);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -355,6 +359,10 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void SeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeccionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SeccionesActionPerformed
 
     /**
      * @param args the command line arguments

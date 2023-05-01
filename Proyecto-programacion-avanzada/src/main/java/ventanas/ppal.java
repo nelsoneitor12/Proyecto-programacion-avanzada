@@ -49,15 +49,16 @@ public class ppal extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        BEnlPro = new javax.swing.JButton();
-        BVenPro = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
+        BotonEnlistarProd = new javax.swing.JButton();
+        BotonVenderProductos = new javax.swing.JButton();
         BCerrar = new javax.swing.JButton();
-        BEmiRep = new javax.swing.JButton();
-        BEnlStoDis = new javax.swing.JButton();
-        BEliPro = new javax.swing.JButton();
-        BModPro = new javax.swing.JButton();
-        BVenPro1 = new javax.swing.JButton();
+        BotonEmitirReporteTxt = new javax.swing.JButton();
+        BotonEnlistarStockDist = new javax.swing.JButton();
+        BotonElimProd = new javax.swing.JButton();
+        BotonModProd = new javax.swing.JButton();
+        BotonComprarADist = new javax.swing.JButton();
+        BotonEmitirReporteVenta = new javax.swing.JButton();
 
         jButton1.setText("Ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,27 +95,27 @@ public class ppal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel1.setFont(new java.awt.Font("Jokerman", 0, 36)); // NOI18N
-        jLabel1.setText("SUPERMERCADO DIECANEL");
-        jLabel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(), null));
+        titulo.setFont(new java.awt.Font("Jokerman", 0, 36)); // NOI18N
+        titulo.setText("SUPERMERCADO DIECANEL");
+        titulo.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(), null));
 
-        BEnlPro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BEnlPro.setText("Enlistar productos");
-        BEnlPro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BEnlPro.setContentAreaFilled(false);
-        BEnlPro.addActionListener(new java.awt.event.ActionListener() {
+        BotonEnlistarProd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonEnlistarProd.setText("Enlistar productos");
+        BotonEnlistarProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonEnlistarProd.setContentAreaFilled(false);
+        BotonEnlistarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BEnlProActionPerformed(evt);
+                BotonEnlistarProdActionPerformed(evt);
             }
         });
 
-        BVenPro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BVenPro.setText("Vender producto");
-        BVenPro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BVenPro.setContentAreaFilled(false);
-        BVenPro.addActionListener(new java.awt.event.ActionListener() {
+        BotonVenderProductos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonVenderProductos.setText("Vender productos");
+        BotonVenderProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonVenderProductos.setContentAreaFilled(false);
+        BotonVenderProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BVenProActionPerformed(evt);
+                BotonVenderProductosActionPerformed(evt);
             }
         });
 
@@ -128,53 +129,63 @@ public class ppal extends javax.swing.JFrame {
             }
         });
 
-        BEmiRep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BEmiRep.setText("Emitir reporte");
-        BEmiRep.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BEmiRep.setContentAreaFilled(false);
-        BEmiRep.addActionListener(new java.awt.event.ActionListener() {
+        BotonEmitirReporteTxt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonEmitirReporteTxt.setText("Emitir reporte de bodega.txt");
+        BotonEmitirReporteTxt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonEmitirReporteTxt.setContentAreaFilled(false);
+        BotonEmitirReporteTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BEmiRepActionPerformed(evt);
+                BotonEmitirReporteTxtActionPerformed(evt);
             }
         });
 
-        BEnlStoDis.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BEnlStoDis.setText("Enlistar stock distribuidores");
-        BEnlStoDis.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BEnlStoDis.setContentAreaFilled(false);
-        BEnlStoDis.addActionListener(new java.awt.event.ActionListener() {
+        BotonEnlistarStockDist.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonEnlistarStockDist.setText("Enlistar stock distribuidores");
+        BotonEnlistarStockDist.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonEnlistarStockDist.setContentAreaFilled(false);
+        BotonEnlistarStockDist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BEnlStoDisActionPerformed(evt);
+                BotonEnlistarStockDistActionPerformed(evt);
             }
         });
 
-        BEliPro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BEliPro.setText("Eliminar producto");
-        BEliPro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BEliPro.setContentAreaFilled(false);
-        BEliPro.addActionListener(new java.awt.event.ActionListener() {
+        BotonElimProd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonElimProd.setText("Eliminar producto");
+        BotonElimProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonElimProd.setContentAreaFilled(false);
+        BotonElimProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BEliProActionPerformed(evt);
+                BotonElimProdActionPerformed(evt);
             }
         });
 
-        BModPro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BModPro.setText("Modificar producto");
-        BModPro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BModPro.setContentAreaFilled(false);
-        BModPro.addActionListener(new java.awt.event.ActionListener() {
+        BotonModProd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonModProd.setText("Modificar producto");
+        BotonModProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonModProd.setContentAreaFilled(false);
+        BotonModProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BModProActionPerformed(evt);
+                BotonModProdActionPerformed(evt);
             }
         });
 
-        BVenPro1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BVenPro1.setText("Comprar stock a distribuidor");
-        BVenPro1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BVenPro1.setContentAreaFilled(false);
-        BVenPro1.addActionListener(new java.awt.event.ActionListener() {
+        BotonComprarADist.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonComprarADist.setText("Comprar stock a distribuidor");
+        BotonComprarADist.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonComprarADist.setContentAreaFilled(false);
+        BotonComprarADist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BVenPro1ActionPerformed(evt);
+                BotonComprarADistActionPerformed(evt);
+            }
+        });
+
+        BotonEmitirReporteVenta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BotonEmitirReporteVenta.setText("Emitir reporte de venta");
+        BotonEmitirReporteVenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotonEmitirReporteVenta.setContentAreaFilled(false);
+        BotonEmitirReporteVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEmitirReporteVentaActionPerformed(evt);
             }
         });
 
@@ -186,25 +197,28 @@ public class ppal extends javax.swing.JFrame {
                 .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BEmiRep, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotonEmitirReporteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BEliPro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BotonEmitirReporteVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(92, 92, 92)
+                                .addComponent(BotonElimProd, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1)
+                                .addComponent(titulo)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(BEnlPro, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                        .addComponent(BVenPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(BotonEnlistarProd, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                        .addComponent(BotonVenderProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(BEnlStoDis, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(BotonEnlistarStockDist, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(92, 92, 92)
-                                            .addComponent(BVenPro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addComponent(BModPro, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(BotonComprarADist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(BotonModProd, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -214,22 +228,24 @@ public class ppal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BCerrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BEnlPro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BEnlStoDis, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonEnlistarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonEnlistarStockDist, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BVenPro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BVenPro1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonVenderProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonComprarADist, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BEmiRep, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BModPro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BotonEmitirReporteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonModProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(BEliPro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonElimProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonEmitirReporteVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(102, 102, 102))
         );
 
@@ -237,7 +253,7 @@ public class ppal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BEnlProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEnlProActionPerformed
+    private void BotonEnlistarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEnlistarProdActionPerformed
         // TODO add your handling code here:
         //bodega.enlistarSecciones();
        try {
@@ -248,9 +264,9 @@ public class ppal extends javax.swing.JFrame {
            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
        }
 
-    }//GEN-LAST:event_BEnlProActionPerformed
+    }//GEN-LAST:event_BotonEnlistarProdActionPerformed
 
-    private void BVenProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVenProActionPerformed
+    private void BotonVenderProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVenderProductosActionPerformed
        try {
            /*
            try {
@@ -266,7 +282,7 @@ public class ppal extends javax.swing.JFrame {
        }
         this.dispose();
 
-    }//GEN-LAST:event_BVenProActionPerformed
+    }//GEN-LAST:event_BotonVenderProductosActionPerformed
 
     private void BCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarActionPerformed
         // TODO add your handling code here:
@@ -276,7 +292,7 @@ public class ppal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BCerrarActionPerformed
 
-    private void BEmiRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEmiRepActionPerformed
+    private void BotonEmitirReporteTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEmitirReporteTxtActionPerformed
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) dim.getWidth();
         int screenHeight = (int) dim.getHeight();
@@ -294,9 +310,9 @@ public class ppal extends javax.swing.JFrame {
        
         //new ventanaEmitirReporte().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BEmiRepActionPerformed
+    }//GEN-LAST:event_BotonEmitirReporteTxtActionPerformed
 
-    private void BEnlStoDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEnlStoDisActionPerformed
+    private void BotonEnlistarStockDistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEnlistarStockDistActionPerformed
        try {
            // TODO add your handling code here:
            new ventanaEnlistarDistribuidores().setVisible(true);
@@ -305,9 +321,9 @@ public class ppal extends javax.swing.JFrame {
        }
         this.dispose();
 
-    }//GEN-LAST:event_BEnlStoDisActionPerformed
+    }//GEN-LAST:event_BotonEnlistarStockDistActionPerformed
 
-    private void BEliProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliProActionPerformed
+    private void BotonElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonElimProdActionPerformed
        try {
            // TODO add your handling code here:
            new ventanaElim().setVisible(true);
@@ -316,9 +332,9 @@ public class ppal extends javax.swing.JFrame {
        }
         this.dispose();
 
-    }//GEN-LAST:event_BEliProActionPerformed
+    }//GEN-LAST:event_BotonElimProdActionPerformed
 
-    private void BModProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModProActionPerformed
+    private void BotonModProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModProdActionPerformed
        try {
            // TODO add your handling code here:
            new ventanaModi().setVisible(true);
@@ -326,11 +342,11 @@ public class ppal extends javax.swing.JFrame {
            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
        }
         this.dispose();
-    }//GEN-LAST:event_BModProActionPerformed
+    }//GEN-LAST:event_BotonModProdActionPerformed
 
-    private void BVenPro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVenPro1ActionPerformed
+    private void BotonComprarADistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonComprarADistActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BVenPro1ActionPerformed
+    }//GEN-LAST:event_BotonComprarADistActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -339,47 +355,33 @@ public class ppal extends javax.swing.JFrame {
        try {
            ventana = new ppal();
            ventana.init(bodega);
+           ventana.setVisible(true);
        } catch (FileNotFoundException ex) {
            Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
        }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    /*
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Bodega bodega;
-                try {
-                    bodega = new Bodega();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    new ppal().setVisible(true);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
-*/
+    private void BotonEmitirReporteVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEmitirReporteVentaActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        ventanaEmitirReporte ventana = new ventanaEmitirReporte();
+        ventana.init(bodega);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_BotonEmitirReporteVentaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BCerrar;
-    private javax.swing.JButton BEliPro;
-    private javax.swing.JButton BEmiRep;
-    private javax.swing.JButton BEnlPro;
-    private javax.swing.JButton BEnlStoDis;
-    private javax.swing.JButton BModPro;
-    private javax.swing.JButton BVenPro;
-    private javax.swing.JButton BVenPro1;
+    private javax.swing.JButton BotonComprarADist;
+    private javax.swing.JButton BotonElimProd;
+    private javax.swing.JButton BotonEmitirReporteTxt;
+    private javax.swing.JButton BotonEmitirReporteVenta;
+    private javax.swing.JButton BotonEnlistarProd;
+    private javax.swing.JButton BotonEnlistarStockDist;
+    private javax.swing.JButton BotonModProd;
+    private javax.swing.JButton BotonVenderProductos;
     private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

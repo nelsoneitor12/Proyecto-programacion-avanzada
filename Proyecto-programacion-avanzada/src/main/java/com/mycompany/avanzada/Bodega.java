@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 //import ventanas.ventanaVentaSeccion2;
@@ -27,6 +25,10 @@ public class Bodega {
             stockDistrib = lecturaTxt.lecturaProductos(d,1);
             orden = new OrdenCompra();
 	}
+        
+        public Reportes getRep(){
+            return this.reportes;
+        }
         /*
         public void guardar() throws IOException {
                 String nombre = "./reporteOrdenNro_"+orden.getNroOrden();
@@ -48,6 +50,7 @@ public class Bodega {
 		System.out.println("Precio Final: $"+getOrden().getTotal());
 	}
         */
+        
         public OrdenCompra getOrden(){
             return orden;
         }
@@ -92,13 +95,7 @@ public class Bodega {
                 orden.agregarProducto(copia);
                 orden.actualizarPrecio();
                 this.getFile().guardarBodega();
-
-                    
-                //ventanaVentaSeccion2 ventana = new ventanaVentaSeccion2();//novaafuncar
-                
-                    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        	
-		
+                //este return es innecesario hay que borrarlo
 		return bod;
 	}
 	 
@@ -114,7 +111,7 @@ public class Bodega {
 	public void eliminarProducto(String seccionAux, String prod) throws IOException{
 
  		bodega.get(seccionAux).elimProd(prod); //elimina el objeto de la seccion indicada
-}
+        }
          
 	public void modificarProducto() throws IOException{
 		BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));

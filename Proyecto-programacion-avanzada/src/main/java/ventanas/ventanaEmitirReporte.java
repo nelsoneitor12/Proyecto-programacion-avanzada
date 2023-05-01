@@ -4,23 +4,79 @@
  */
 package ventanas;
 
+import com.mycompany.avanzada.Bodega;
+import com.mycompany.avanzada.OrdenCompra;
+import com.mycompany.avanzada.TipoProducto;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author Sashi
  */
 public class ventanaEmitirReporte extends javax.swing.JFrame {
-
+    Bodega bodega;
     /**
      * Creates new form ventanaVender
      */
     public ventanaEmitirReporte() {
         initComponents();
     }
-
+    public void generarLista(){
+        if(EleOrden.getSelectedItem() != null){
+            OrdenCompra orden2 = new OrdenCompra();
+            List<OrdenCompra> ordenes = bodega.getRep().getArrOrdenes();
+            List<TipoProducto> car = new ArrayList<>();
+            
+            for (OrdenCompra orden : ordenes) {
+                if (orden.getNroOrden() == Integer.parseInt(String.valueOf(EleOrden.getSelectedItem()))) {
+                    orden2 = orden;  
+                    car = orden.getCarro();
+                }
+            }
+            
+            Iterator<TipoProducto> it = car.iterator();
+            TipoProducto now;
+            DefaultListModel listModel = new DefaultListModel();
+            while(it.hasNext()) {
+                now = it.next();
+                listModel.addElement("Producto: "+now.getNombre()+" "+now.getSeccion()+", Cantidad: "+now.getStock()+", Precio Unitario: $"+now.getPrecio());
+            }
+            jList.setModel(listModel);
+            jList.setVisible(true);
+   
+            EleOrden.getSelectedItem();
+            labelFecha.setText("Fecha : "+orden2.getFechaEmision_text());
+            labelPFinal.setText("Precio total: "+Integer.toString(orden2.getTotal()));
+            
+        }
+        
+    
+    }
+    public void init(Bodega bodega){
+        this.bodega = bodega;
+        this.generarComboBox1();
+    }
+    public void generarComboBox1(){
+        List<OrdenCompra> arr = bodega.getRep().getArrOrdenes();
+        String[] opciones = new String[arr.size()];
+        Iterator<OrdenCompra> it = arr.iterator();
+        OrdenCompra now;       
+        int i = 0;
+        while(it.hasNext()) {
+            now = it.next();
+            opciones[i] = String.valueOf(now.getNroOrden());
+            i++;
+	}
+        EleOrden.setModel(new javax.swing.DefaultComboBoxModel(opciones));
+        EleOrden.setSelectedIndex(-1);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +87,11 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
     private void initComponents() {
 
         BCerrar = new javax.swing.JButton();
+        EleOrden = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList = new javax.swing.JList<>();
+        labelPFinal = new javax.swing.JLabel();
+        labelFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -44,21 +105,53 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
             }
         });
 
+        EleOrden.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        EleOrden.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EleOrdenItemStateChanged(evt);
+            }
+        });
+        EleOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EleOrdenActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(715, Short.MAX_VALUE)
-                .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(EleOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(labelFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelPFinal)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BCerrar)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BCerrar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(EleOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelFecha)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelPFinal)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,50 +161,34 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
     private void BCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCerrarActionPerformed
         try {
             // TODO add your handling code here:
-            new ppal().setVisible(true);
+            ppal ventana = new ppal();
+            ventana.init(bodega);
+            ventana.setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ventanaEnlistar.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
     }//GEN-LAST:event_BCerrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaEmitirReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaEmitirReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaEmitirReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaEmitirReporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void EleOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EleOrdenActionPerformed
+        // TODO add your handling code here:
+        //GENERAR LISTA
+    }//GEN-LAST:event_EleOrdenActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaEmitirReporte().setVisible(true);
-            }
-        });
-    }
+    private void EleOrdenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EleOrdenItemStateChanged
+        // TODO add your handling code here:
+        //buscar reporte
+        this.generarLista();
+        
+        
+    }//GEN-LAST:event_EleOrdenItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BCerrar;
+    private javax.swing.JComboBox<String> EleOrden;
+    private javax.swing.JList<String> jList;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelPFinal;
     // End of variables declaration//GEN-END:variables
 }

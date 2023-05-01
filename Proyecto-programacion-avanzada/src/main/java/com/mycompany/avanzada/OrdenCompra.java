@@ -1,6 +1,5 @@
 package com.mycompany.avanzada;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -10,7 +9,7 @@ public class OrdenCompra {
 	
 	private int fechaEmision_num;
 	private String fechaEmision_text;
-	private double total;
+	private int total;
 	private int nroOrden;
 	private List<TipoProducto> carro = new ArrayList<>();
 	//getter lista productos (carro)
@@ -36,15 +35,15 @@ public class OrdenCompra {
 		this.fechaEmision_text = fechaEmision;
 	}
 
-	public double getTotal() {
+	public int getTotal() {
 		return total;
 	}
 
-	public void setTotal(double tot) {
+	public void setTotal(int tot) {
 		total = tot;
 	}
 
-	public double getNroOrden() {
+	public int getNroOrden() {
 		return nroOrden;
 	}
 
@@ -68,8 +67,8 @@ public class OrdenCompra {
 	public void actualizarPrecio() {
 		Iterator<TipoProducto> it = carro.iterator();
 		TipoProducto now;
-		double sum = 0;
-		double mult = 0;
+		int sum = 0;
+		int mult = 0;
 		while(it.hasNext()) {
 			now = it.next();
 			mult = now.getPrecio()*now.getStock();
