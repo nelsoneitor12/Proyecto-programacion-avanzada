@@ -18,55 +18,5 @@ public class App {
                 Bodega bodega = new Bodega();
                 ventana.init(bodega);
                 ventana.setVisible(true);
-		//menu
-                //Bodega bodega;
-                //bodega = new Bodega();
-                //int opcion;
-                /*
-		do {
-                    
-            System.out.println("Seleccione la operacion a realizar");
-            System.out.println("[1] ENLISTAR PRODUCTOS");
-            System.out.println("[2] Vender Producto");
-            System.out.println("[3] Emitir Reporte de Compras");
-            System.out.println("[4] ENLISTAR STOCK DISTRIBUIDORES");
-            System.out.println("[5] Eliminar producto");
-            System.out.println("[6] Modificar producto");
-            System.out.println("[0] SALIR");
-           
-            a = lector.readLine();
-            opcion = Integer.parseInt(a);
-            opcion = ventana.getEstado();
-            
-            switch(opcion) {
-            	case 1:
-                        System.out.print("AAAAAAAAAAAAAAAAAAAAAA");
-            		bodega.enlistarSecciones();
-            		break;
-            	case 2:
-                    System.out.print("AAAAAAAAAAAAAAAAAAAAAA");
-            		bodega.Venta();
-            		break;
-            	case 3:
-                    System.out.print("AAAAAAAAAAAAAAAAAAAAAA");
-            		bodega.emitirReporte();
-            		break;
-            	case 4:
-                    System.out.print("AAAAAAAAAAAAAAAAAAAAAA");
-            		bodega.enlistarDistribuidores();
-            		break;
-            	case 5:
-                    System.out.print("AAAAAAAAAAAAAAAAAAAAAA");
-            		bodega.eliminarProducto();
-            		break;
-            	case 6:
-                    System.out.print("AAAAAAAAAAAAAAAAAAAAAA");
-            		bodega.modificarProducto();
-            	default:
-            		break;
-            }
-		}while(opcion!=0);*/
-
    }
-
 }

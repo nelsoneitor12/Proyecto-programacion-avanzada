@@ -345,7 +345,12 @@ public class ppal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonModProdActionPerformed
 
     private void BotonComprarADistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonComprarADistActionPerformed
-        // TODO add your handling code here:
+       try {
+           ventantaCompraDist ventana= new ventantaCompraDist(bodega);
+           ventana.setVisible(true);        // TODO add your handling code here:
+       } catch (FileNotFoundException ex) {
+           Logger.getLogger(ppal.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_BotonComprarADistActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

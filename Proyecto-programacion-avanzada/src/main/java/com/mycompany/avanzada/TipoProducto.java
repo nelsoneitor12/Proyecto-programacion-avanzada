@@ -59,12 +59,12 @@ public class TipoProducto {
         }
         
         public void addStock(int i){
-        	stock+=i;
+            stock+=i;
         }
         
         public void removeStock(int i) throws StockAmountException{
         	if (stock-i < 0) throw new StockAmountException();
-            stock-=i;
+        	stock-=i;
         }
 
 	public String getSeccion() {

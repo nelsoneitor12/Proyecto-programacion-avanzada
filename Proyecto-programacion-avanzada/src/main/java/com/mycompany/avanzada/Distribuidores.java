@@ -16,6 +16,7 @@ public class Distribuidores extends TipoSeccion{
             return mapa;
         }
         
+        @Override
 	public void agregarProducto(String[] prod) {
     	ProdDistrib newPro = new ProdDistrib();
     	newPro.setNombre(prod[0]);
@@ -28,20 +29,33 @@ public class Distribuidores extends TipoSeccion{
     	
     }
 	
+        @Override
 	public void enlistarProductos() { 
-            ProdDistrib now = new ProdDistrib();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
-            for(Entry<String, ProdDistrib> r : mapa.entrySet()) {
-    		now = r.getValue();
-                    System.out.println("Producto: "+now.getNombre()+",Precio unitario:$"+now.getPrecio()+",Stock Disponible:"+now.getStock()+",Categoria:"+now.getMarca());
-		}
+            
         }
 	
-	public void actualizarStock(String indice) throws IOException,StockAmountException{ //suma el stock que el usuario indique si el producto ya esta en el arreglo
+	public void actualizarStock(String indice) throws IOException,StockAmountException { //suma el stock que el usuario indique si el producto ya esta en el arreglo
     	int stock;
     	BufferedReader line = new BufferedReader(new InputStreamReader(System.in));
     	System.out.println("El producto ya se encuentra en bodega, ingrese la cantidad de stock que desea agregar: ");
     	stock=Integer.parseInt(line.readLine());
     	mapa.get(indice).removeStock(stock);
     }
+        
+        @Override
+    public ProdDistrib getCloneProducto(String name) {
+        	ProdDistrib original,copia;
+        	original=mapa.get(name);
+        	copia=new ProdDistrib();
+        	
+        	copia.setNombre(original.getNombre());
+        	copia.setSeccion(original.getSeccion());
+        	copia.setPrecio(original.getPrecio());
+        	copia.setStock(original.getStock());
+        	copia.setCodigo(original.getCodigo());
+        	copia.setMarca(original.getMarca());
+        	return copia;
+        	
+        }
 
 }

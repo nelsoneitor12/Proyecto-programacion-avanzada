@@ -1,32 +1,32 @@
 -----------------------------------------
 SECCION: Limpieza
 -----------------------------------------
-Suavizante ropa ultrasuave 0.5L, 14121, 13, 3000
-Trapero humedo 12 unidades, 45621, 1, 2300
-null, 15240, 40, 3900
+Detergente en polvo 3kg, 15240, 43, 3900
+Suavizante ropa ultrasuave 0.5L, 14121, 14, 3000
+Trapero humedo 12 unidades, 45621, 97, 2300
 Limpiador multiuso 400g, 11112, 20, 1000
-Lavaloza limon 5L, 10365, 14, 3100
-Limpia vidrios 500cc, 2, 14, 2800
+Lavaloza limon 5L, 10365, 44, 3100
+Limpia vidrios 500cc, 12121, 18, 2800
 Cloro gel 900ml, 25142, 20, 1900
 -----------------------------------------
 SECCION: Mascotas
 -----------------------------------------
-Alimento enlatado gato adulto 85g, 11668, 21, 900
+Alimento enlatado gato adulto 85g, 11668, 47, 900
 Arena sanitaria gatos 4kg, 45867, 0, 15000
-Alimento perro adulto 100g, 99998, -10, 600
+Alimento perro adulto 100g, 99998, 5, 600
 Alimento gato adulto 8kg, 36941, 9, 24000
 -----------------------------------------
 SECCION: Botilleria
 -----------------------------------------
-Lata de cerveza, 66688, 38, 500
-Jugo naranja 5L, 14785, 20, 3000
-Agua mineral 1L, 54625, 11, 800
-Bebida energetica 450cc, 33332, 9, 1700
+Lata de cerveza, 66688, 57, 500
+Jugo naranja 5L, 14785, 16, 3000
+Agua mineral 1L, 54625, 5, 800
+Bebida energetica 450cc, 33332, 4, 1700
 Vino en caja 500ml, 44441, 15, 2300
 -----------------------------------------
 SECCION: Despensa
 -----------------------------------------
 Pure de papas 125g, 66666, 8, 900
-Atun 100g, 55760, 44, 1400
-Arroz grado 2 1kg, 44444, 6, 1500
-Fideos 400g, 13138, 50, 1200
+Atun 100g, 55760, 0, 1400
+Arroz grado 2 1kg, 44444, 1847, 1500
+Fideos 400g, 13138, 56, 1200

@@ -15,23 +15,28 @@ public class Bodega {
         private Map<String,Distribuidores> stockDistrib;
 	private FileClass lecturaTxt;
 	private Reportes reportes;
-        OrdenCompra orden;
-	 
+        private Reportes reportesDistrib;
+        OrdenVenta ordenVen;
+	OrdenCompra ordenCom;
 	public Bodega() throws FileNotFoundException {
             lecturaTxt = new FileClass();
             reportes = new Reportes();
             bodega = lecturaTxt.lecturaProductos(f);
             stockDistrib = lecturaTxt.lecturaProductos(d,1);
-            orden = new OrdenCompra();
+            ordenVen = new OrdenVenta();
+            ordenCom= new OrdenCompra();
 	}
         
         public Reportes getRep(){
             return this.reportes;
         }
-
         
-        public OrdenCompra getOrden(){
-            return orden;
+        public OrdenCompra getOrdenCom(){
+            return ordenCom;
+        }
+        
+        public OrdenVenta getOrdenVen(){
+            return ordenVen;
         }
 	public FileClass getFile(){
             return lecturaTxt;
@@ -56,11 +61,25 @@ public class Bodega {
  			r.getValue().enlistarProductos();
  		}
 	 }
-	public void agregarProducto() throws IOException{
-	 
+	public Bodega comprarDitrib(String dis, String prod, int cant, Bodega bod) throws IOException,StockAmountException{
+            Distribuidores distActual=bod.getMapaDist().get(dis);
+            ProdDistrib prodDis= distActual.getMapaD().get(prod);
+            System.out.println(prodDis.getMarca());
+            TipoSeccion seccion=bod.getMapa().get(prodDis.getSeccion());
+            System.out.println(seccion.getNomSeccion());
+            TipoProducto prodSecc=seccion.getProducto(prod);
+            prodDis.removeStock(cant);
+            prodSecc.addStock(cant);
+            ProdDistrib copia=distActual.getCloneProducto(prod);
+            copia.setStock(cant);
+            ordenCom.agregarProducto(copia);
+            ordenCom.actualizarPrecio();
+            this.getFile().guardarBodega();
+            this.getFile().guardarBodegaDist();
+            return bod;
 	}
 	 
-	public Bodega Venta(String nomSeccion, String nomProducto, int cantidad, Bodega bod) throws IOException, StockAmountException {
+	public Bodega Venta(String nomSeccion, String nomProducto, int cantidad, Bodega bod) throws IOException,StockAmountException {
             
 		TipoSeccion seccion;
 		TipoProducto prod, copia;
@@ -68,11 +87,9 @@ public class Bodega {
                 prod = seccion.getProducto(nomProducto);
                 copia = seccion.getCloneProducto(nomProducto);
                 copia.setStock(cantidad);
-                
                 seccion.actualizarStock(prod.getNombre(), cantidad);
-                
-                orden.agregarProducto(copia);
-                orden.actualizarPrecio();
+                ordenVen.agregarProducto(copia);
+                ordenVen.actualizarPrecio();
                 this.getFile().guardarBodega();
                 //este return es innecesario hay que borrarlo
 		return bod;
@@ -81,10 +98,16 @@ public class Bodega {
 	public void emitirReporte() {
 		reportes.enlistarOrdenesDeCompra();
 	}
-        public void finalizarVenta() throws IOException{
-            orden.finalizarVenta();
-            reportes.agregarOrdenDeCompra(orden);
-            orden = new OrdenCompra();
+        public void finalizarVenta(OrdenVenta orden) throws IOException{
+            ordenVen.finalizarVenta();
+            reportes.agregarOrdenDeCompra(ordenVen);
+            ordenVen = new OrdenVenta();
+        }
+        
+        public void finalizarVenta(OrdenCompra orden) throws IOException{
+            ordenCom.finalizarVenta();
+            reportes.agregarOrdenDeCompra(ordenCom);
+            ordenCom = new OrdenCompra();
         }
 	 
 	public void eliminarProducto(String seccionAux, String prod) throws IOException{
@@ -92,7 +115,7 @@ public class Bodega {
  		bodega.get(seccionAux).elimProd(prod); //elimina el objeto de la seccion indicada
         }
          
-	public void modificarProducto(String s, String p, String opcion,String newValor) throws IOException, InvalidNumberException{
+	public void modificarProducto(String s, String p, String opcion,String newValor) throws IOException,InvalidNumberException{
                 //actual[4] = s;
                 //actual[0] = p;
                 //VENTANA PARA ELEGIR

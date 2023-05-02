@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Sashi
@@ -192,18 +191,16 @@ public class ventanaModi extends javax.swing.JFrame {
             String newValue = JOptionPane.showInputDialog(null, "nuevo valor");
             try {
                 bodega.modificarProducto(s ,p ,opcion ,newValue);
-            } 
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 Logger.getLogger(ventanaModi.class.getName()).log(Level.SEVERE, null, ex);
             }
-            /////////////////
             catch (InvalidNumberException e) {//Ingresa un numero menor invalido para la operacion
-            	 JOptionPane.showMessageDialog(null,"Error: Numero no valido");
-            }
-            catch (NumberFormatException eN) {//Ingresa un String en lugar de un int
-            	 JOptionPane.showMessageDialog(null,"Error: Debe ingresar un numero");
-            }
-            
+           	 JOptionPane.showMessageDialog(null,"Error: Numero no valido");
+           }
+           catch (NumberFormatException eN) {//Ingresa un String en lugar de un int
+           	 JOptionPane.showMessageDialog(null,"Error: Debe ingresar un numero");
+           }
+           
             dispose();
             ppal ventana;
             try {

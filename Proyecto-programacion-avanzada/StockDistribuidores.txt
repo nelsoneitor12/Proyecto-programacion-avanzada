@@ -1,22 +1,22 @@
-Lavaloza limon 5L,10365,500,1700,Limpieza,Quick
-Detergente en polvo 3kg,15240,700,2800,Limpieza,Omo
-Suavizante ropa ultrasuave 0.5L,14121,400,2000,Limpieza,Omo
+Lavaloza limon 5L,10365,470,1700,Limpieza,Quick
+Trapero humedo 12 unidades,45621,0,1500,Limpieza,Cif
 Limpiador multiuso 400g,11112,700,600,Limpieza,Cif
-Limpia vidrios 500cc,12121,300,2000,Limpieza,Cif
+Limpia vidrios 500cc,12121,296,2000,Limpieza,Cif
 Cloro gel 900ml,25142,1000,1000,Limpieza,Cif
-Trapero humedo 12 unidades,45621,1000,1500,Limpieza,Cif
-Jugo naranja 5L,14785,1000,2000,Botilleria,Watts
-Agua mineral 1L,54625,2000,400,Botilleria,Cachantun
+Lata de cerveza,66688,10,5000,Botilleria,Cristal
+Arroz grado 2 1kg,44444,6900,600,Despensa,Tucapel
+Fideos 400g,13138,41,7000,Despensa,Carozzi
+Atun 100g,55760,460,900,Despensa,San Jose
+Detergente en polvo 3kg,15240,697,2800,Limpieza,Omo
+Suavizante ropa ultrasuave 0.5L,14121,399,2000,Limpieza,Omo
+Alimento enlatado gato adulto 85g,11668,483,450,Mascotas,Whiskas
+Alimento gato adulto 8kg,36941,1100,10000,Mascotas,Whiskas
 Vino en caja 500ml,44441,1000,1800,Botilleria,Gato
-Lata de cerveza,66688,40,5000,Botilleria,Cristal
-Bebida energetica 450cc,33332,4000,1000,Botilleria,RedBull
 Alimento de perro cachorro 15kg,75395,600,19000,Mascotas,Champion
 Alimento perro adulto 100g,99998,1400,300,Mascotas,Champion
+Agua mineral 1L,54625,2000,400,Botilleria,Cachantun
 Arena sanitaria gatos 4kg,45867,300,7000,Mascotas,Easy Clean
-Alimento gato adulto 8kg,36941,1100,10000,Mascotas,Whiskas
-Alimento enlatado gato adulto 85g,11668,500,450,Mascotas,Whiskas
-Atun 100g,55760,500,900,Despensa,San Jose
-Arroz grado 2 1kg,44444,10000,600,Despensa,Tucapel
-Fideos 400g,13138,50,7000,Despensa,Carozzi
-Sopa pollo en polvo 70g,88878,3000,270,Despensa,Maggi
+Bebida energetica 450cc,33332,4000,1000,Botilleria,RedBull
+Jugo naranja 5L,14785,1000,2000,Botilleria,Watts
 Pure de papas 125g,66666,1300,450,Despensa,Maggi
+Sopa pollo en polvo 70g,88878,3000,270,Despensa,Maggi

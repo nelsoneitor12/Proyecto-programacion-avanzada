@@ -86,6 +86,14 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        minValue = new javax.swing.JTextField();
+        maxValue = new javax.swing.JTextField();
+        FiltrarButton = new java.awt.Button();
+        jLabel6 = new javax.swing.JLabel();
+        PrecioUnit = new javax.swing.JLabel();
+        preUnit = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        preTot = new javax.swing.JLabel();
 
         jLabel5.setText("Agregado! :)");
 
@@ -193,6 +201,43 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             }
         });
 
+        minValue.setText("Min");
+        minValue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minValueMouseClicked(evt);
+            }
+        });
+        minValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minValueActionPerformed(evt);
+            }
+        });
+
+        maxValue.setText("Max");
+        maxValue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                maxValueMouseClicked(evt);
+            }
+        });
+        maxValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maxValueActionPerformed(evt);
+            }
+        });
+
+        FiltrarButton.setLabel("Filtrar");
+        FiltrarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltrarButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Filtrar por Precio:");
+
+        PrecioUnit.setText("Precio unitario:");
+
+        jLabel7.setText("Total a Pagar :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,47 +245,81 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(min)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(133, 133, 133)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(minValue, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(maxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(61, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(min)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Slider, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(max)))
+                                .addGap(90, 90, 90))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jButton3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton1)
+                                    .addGap(16, 16, 16))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap())
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(FiltrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(129, 129, 129)))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(195, 195, 195))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Slider, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(max)
-                        .addGap(58, 58, 58))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(527, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PrecioUnit, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(preUnit, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(preTot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addGap(103, 103, 103)
-                .addComponent(jLabel1)
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(FiltrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +333,15 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PrecioUnit)
+                    .addComponent(preUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(preTot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
@@ -286,8 +373,7 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         Slider.getValue();
         try {
             bodega = bodega.Venta(sec,prod,Slider.getValue(), bodega);
-        } 
-        catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
         }
         catch (StockAmountException eS) {
@@ -326,7 +412,11 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
             Slider.setMinimum(1);
         }
         int maximo = bodega.getMapa().get(Secciones.getSelectedItem()).getMapa().get(Productos.getSelectedItem()).getStock();
+        int unit= bodega.getMapa().get(Secciones.getSelectedItem()).getMapa().get(Productos.getSelectedItem()).getPrecio();
         max.setText(Integer.toString(maximo));
+        preUnit.setText(Integer.toString(unit));
+        preTot.setText(Integer.toString(unit*Slider.getValue()));
+        
         //Slider.setPaintTicks(true);
         //bodega.getMapa().get(Secciones.getSelectedItem()).getMapa().get(Productos.getSelectedItem()).getStock());
     }//GEN-LAST:event_ProductosItemStateChanged
@@ -343,6 +433,11 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
     private void SliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderStateChanged
         int num = Slider.getValue();
         jLabel3.setText(Integer.toString(num));
+        int maximo = bodega.getMapa().get(Secciones.getSelectedItem()).getMapa().get(Productos.getSelectedItem()).getStock();
+        int unit= bodega.getMapa().get(Secciones.getSelectedItem()).getMapa().get(Productos.getSelectedItem()).getPrecio();
+        preUnit.setText(Integer.toString(unit));
+        preTot.setText(Integer.toString(unit*Slider.getValue()));
+        
     }//GEN-LAST:event_SliderStateChanged
 
     private void bOkDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOkDialogActionPerformed
@@ -353,7 +448,7 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
-            bodega.finalizarVenta();
+            bodega.finalizarVenta(bodega.getOrdenVen());
 
             ppal ventana = new ppal();
             ventana.init(bodega);
@@ -370,12 +465,66 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SeccionesActionPerformed
 
+    private void minValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minValueActionPerformed
+
+    private void maxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maxValueActionPerformed
+
+    private void FiltrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltrarButtonActionPerformed
+        try {
+            System.out.println(minValue.getText());
+            System.out.println(maxValue.getText());
+            int min;
+            int max;
+            if(minValue.getText()!=null && maxValue.getText()!=null && minValue.getText().equals("Min")==false && maxValue.getText().equals("Max")==false){
+                min= Integer.parseInt(minValue.getText());
+                max= Integer.parseInt(maxValue.getText());
+                if(min>max) JOptionPane.showMessageDialog(null, "El primer elemento debe ser menor al segundo!!");
+                else generarComboBox2(min,max);// TODO add your handling code here:
+            }
+            else JOptionPane.showMessageDialog(null, "Debe ingresar un minimo y un maximo");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ventanaVentaSeccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_FiltrarButtonActionPerformed
+
+    public void generarComboBox2(int min, int max) throws FileNotFoundException{
+        if(Secciones.getSelectedItem() != null){
+            //conseguir mapa de productos para asignar nombres a opciones de combobox2
+            Map<String,TipoProducto> mapa = bodega.getMapa().get(Secciones.getSelectedItem()).getMapa();
+            String[] opciones = new String[mapa.size()];
+            int i = 0;
+            TipoProducto now;
+            for(Entry<String, TipoProducto> r : mapa.entrySet()) {
+                now= r.getValue();
+                if(now.getPrecio()<=max && now.getPrecio()>=min){
+                    opciones[i] = r.getValue().getNombre();
+                    i++;
+                }
+            }
+            Productos.setModel(new javax.swing.DefaultComboBoxModel(opciones));
+        }
+    }
+    
+    private void minValueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minValueMouseClicked
+            minValue.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_minValueMouseClicked
+
+    private void maxValueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxValueMouseClicked
+            maxValue.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_maxValueMouseClicked
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button FiltrarButton;
+    private javax.swing.JLabel PrecioUnit;
     private javax.swing.JComboBox<String> Productos;
     private javax.swing.JComboBox<String> Secciones;
     private javax.swing.JSlider Slider;
@@ -389,7 +538,13 @@ public class ventanaVentaSeccion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel max;
+    private javax.swing.JTextField maxValue;
     private javax.swing.JLabel min;
+    private javax.swing.JTextField minValue;
+    private javax.swing.JLabel preTot;
+    private javax.swing.JLabel preUnit;
     // End of variables declaration//GEN-END:variables
 }

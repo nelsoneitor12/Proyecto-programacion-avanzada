@@ -12,7 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-import java.util.Map.Entry;
+
 
 public class TipoSeccion {
     protected String nomSeccion; //nombre seccion
@@ -46,11 +46,7 @@ public class TipoSeccion {
         }
         
         public void enlistarProductos() { 
-        	TipoProducto now = new TipoProducto();//producto auxiliar para almacenar temporalmente cada producto que contiene la seccion
-        	for(Entry<String, TipoProducto> r : mapa.entrySet()) {
-        		now = r.getValue();
-    			System.out.println("Producto: "+now.getNombre()+",Marca:"+now.getSeccion()+",Precio:"+now.getPrecio()+",Codigo:"+now.getCodigo()+", Stock:"+now.getStock());
-    		}
+        	
         }
         
         public int esta(String lote) {//funcion que verifica si el producto ya esta en el arraylist

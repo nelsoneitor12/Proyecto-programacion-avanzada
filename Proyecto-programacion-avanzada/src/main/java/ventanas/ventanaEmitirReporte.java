@@ -5,15 +5,19 @@
 package ventanas;
 
 import com.mycompany.avanzada.Bodega;
-import com.mycompany.avanzada.OrdenCompra;
+import com.mycompany.avanzada.OrdenVenta;
 import com.mycompany.avanzada.TipoProducto;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,11 +33,11 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
     }
     public void generarLista(){
         if(EleOrden.getSelectedItem() != null){
-            OrdenCompra orden2 = new OrdenCompra();
-            List<OrdenCompra> ordenes = bodega.getRep().getArrOrdenes();
+            OrdenVenta orden2 = new OrdenVenta();
+            List<OrdenVenta> ordenes = bodega.getRep().getArrOrdenes();
             List<TipoProducto> car = new ArrayList<>();
             
-            for (OrdenCompra orden : ordenes) {
+            for (OrdenVenta orden : ordenes) {
                 if (orden.getNroOrden() == Integer.parseInt(String.valueOf(EleOrden.getSelectedItem()))) {
                     orden2 = orden;  
                     car = orden.getCarro();
@@ -52,7 +56,8 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
    
             EleOrden.getSelectedItem();
             labelFecha.setText("Fecha : "+orden2.getFechaEmision_text());
-            labelPFinal.setText("Precio total: "+Integer.toString(orden2.getTotal()));
+            labelPFinal.setText("Precio total: $"+Integer.toString(orden2.getTotal()));
+            TipoOrden.setText("Tipo de orden: "+orden2.getTipoOrden());
             
         }
         
@@ -63,13 +68,15 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
         this.generarComboBox1();
     }
     public void generarComboBox1(){
-        List<OrdenCompra> arr = bodega.getRep().getArrOrdenes();
+        List<OrdenVenta> arr = bodega.getRep().getArrOrdenes();
         String[] opciones = new String[arr.size()];
-        Iterator<OrdenCompra> it = arr.iterator();
-        OrdenCompra now;       
+        Iterator<OrdenVenta> it = arr.iterator();
+        OrdenVenta now;       
         int i = 0;
         while(it.hasNext()) {
+     
             now = it.next();
+            System.out.println(now.getFechaEmision_text());
             opciones[i] = String.valueOf(now.getNroOrden());
             i++;
 	}
@@ -92,6 +99,11 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
         jList = new javax.swing.JList<>();
         labelPFinal = new javax.swing.JLabel();
         labelFecha = new javax.swing.JLabel();
+        TipoOrden = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        filtraFech = new javax.swing.JButton();
+        fechaMinima = new com.toedter.calendar.JDateChooser();
+        fechaMaxima = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -119,6 +131,18 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jList);
 
+        jLabel1.setText("Filtrar Fechas:");
+
+        filtraFech.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        filtraFech.setText("Filtrar");
+        filtraFech.setToolTipText("");
+        filtraFech.setBorder(new javax.swing.border.MatteBorder(null));
+        filtraFech.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtraFechActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,31 +151,57 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(EleOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(labelFecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(labelPFinal)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(EleOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(129, 129, 129)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(labelFecha))
+                                    .addComponent(TipoOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(filtraFech, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fechaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fechaMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(54, 54, 54))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BCerrar)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(EleOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelFecha)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                        .addComponent(labelFecha))
+                    .addComponent(fechaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TipoOrden)
+                    .addComponent(filtraFech, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(labelPFinal)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -183,9 +233,50 @@ public class ventanaEmitirReporte extends javax.swing.JFrame {
         
     }//GEN-LAST:event_EleOrdenItemStateChanged
 
+    private void filtraFechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtraFechActionPerformed
+        try {
+            Date min= fechaMinima.getDate();
+            Date max= fechaMaxima.getDate();
+            if(min!=null && max!=null){
+                generarComboBox1(min,max);
+            }
+            else JOptionPane.showMessageDialog(null, "Debe ingresar ambas fechas");
+// TODO add your handling code here:
+        } catch (ParseException ex) {
+            Logger.getLogger(ventanaEmitirReporte.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_filtraFechActionPerformed
+    
+    public void generarComboBox1(Date min, Date max) throws ParseException{
+        List<OrdenVenta> arr = bodega.getRep().getArrOrdenes();
+        String[] opciones = new String[arr.size()];
+        Iterator<OrdenVenta> it = arr.iterator();
+        String pattern = "dd/MM/yyyy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        OrdenVenta now;       
+        int i = 0;
+        while(it.hasNext()) {
+            now = it.next();
+            Date fecha = dateFormat.parse(now.getFechaEmision_text());
+            System.out.println("fecha minima: "+min.toString()+" Fecha Maxima: "+max.toString()+" FechaAtual: "+ fecha.toString());
+            if(fecha.after(min) && fecha.before(max)){
+                System.out.println("pase");
+                opciones[i] = String.valueOf(now.getNroOrden());
+            }
+            i++;
+	}
+        EleOrden.setModel(new javax.swing.DefaultComboBoxModel(opciones));
+        EleOrden.setSelectedIndex(-1);
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BCerrar;
     private javax.swing.JComboBox<String> EleOrden;
+    private javax.swing.JLabel TipoOrden;
+    private com.toedter.calendar.JDateChooser fechaMaxima;
+    private com.toedter.calendar.JDateChooser fechaMinima;
+    private javax.swing.JButton filtraFech;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelFecha;
